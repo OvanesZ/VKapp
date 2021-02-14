@@ -61,6 +61,9 @@
                                 <state key="normal" title="Log In">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="em7-Tz-Ewp"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3o3-K2-1Th">
                                 <rect key="frame" x="207" y="369" width="150" height="50"/>
@@ -89,6 +92,10 @@
                             <constraint firstItem="dEp-gT-gKb" firstAttribute="centerX" secondItem="Mtg-Eg-HSI" secondAttribute="centerX" id="zaQ-et-04x"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginTextField" destination="btJ-Rr-ebM" id="kch-Y4-wI3"/>
+                        <outlet property="passwordTextField" destination="3o3-K2-1Th" id="UX2-0G-bVe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
