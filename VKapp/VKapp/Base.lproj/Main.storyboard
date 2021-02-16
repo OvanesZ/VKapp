@@ -77,10 +77,11 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="rvD-QA-ZUG" firstAttribute="trailing" secondItem="uoc-zJ-29A" secondAttribute="trailing" id="27g-UO-U6M"/>
                                     <constraint firstItem="3o3-K2-1Th" firstAttribute="leading" secondItem="btJ-Rr-ebM" secondAttribute="leading" id="B21-D8-64k"/>
-                                    <constraint firstItem="thu-oe-5Cw" firstAttribute="bottom" secondItem="sjg-oL-Z2c" secondAttribute="bottom" constant="20" id="F0e-WE-lIL"/>
+                                    <constraint firstItem="sjg-oL-Z2c" firstAttribute="bottom" secondItem="thu-oe-5Cw" secondAttribute="bottom" constant="20" id="F0e-WE-lIL"/>
                                     <constraint firstItem="rvD-QA-ZUG" firstAttribute="centerY" secondItem="3o3-K2-1Th" secondAttribute="centerY" id="FJE-1Y-XeY"/>
                                     <constraint firstItem="Mtg-Eg-HSI" firstAttribute="top" secondItem="sjg-oL-Z2c" secondAttribute="top" constant="20" id="HTV-s6-ubf"/>
                                     <constraint firstItem="3o3-K2-1Th" firstAttribute="width" secondItem="btJ-Rr-ebM" secondAttribute="width" id="KCn-e4-9a5"/>
@@ -101,6 +102,9 @@
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="sjg-oL-Z2c"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="eMq-aX-tg6"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="loY-3C-Xw1" appends="YES" id="Mvs-GD-ULY"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -115,9 +119,15 @@
                     <connections>
                         <outlet property="loginTextField" destination="btJ-Rr-ebM" id="kch-Y4-wI3"/>
                         <outlet property="passwordTextField" destination="3o3-K2-1Th" id="UX2-0G-bVe"/>
+                        <outlet property="scrollView" destination="Jbr-ds-QRS" id="qzo-zI-fJl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="loY-3C-Xw1">
+                    <connections>
+                        <action selector="viewTapped:" destination="BYZ-38-t0r" id="L7N-My-Gx0"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="141" y="91"/>
         </scene>
