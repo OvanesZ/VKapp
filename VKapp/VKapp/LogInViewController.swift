@@ -44,7 +44,7 @@ class LogInViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIButton) {
 //        print("login \(loginTextField.text ?? "")")
 //        print("password \(passwordTextField.text ?? "")")
-        if loginTextField.text == "" {
+        if loginTextField.text == "" && passwordTextField.text == "" {
             performSegue(withIdentifier: "MainSegueBeforeLogin", sender: self)
         } else {
             print("login failed")
