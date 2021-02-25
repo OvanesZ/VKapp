@@ -33,7 +33,21 @@ class MainViewController: UIViewController{
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showFriendsSegue",
+           let senderCell = sender as? FriendCell,
+           let cellIndexPath = tableView.indexPath(for: senderCell),
+           let friendViewController = segue.destination as? FriendsViewController {
+            
+            let selectedFriend = friends[cellIndexPath.row]
+            friendViewController.displayedFriend = selectedFriend
+            
+            
+        }
+    }
 }
+
+
 
 
 extension MainViewController: UITableViewDataSource {
