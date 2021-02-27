@@ -13,11 +13,14 @@
 		4E03553725D9680B00F45590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553525D9680B00F45590 /* Main.storyboard */; };
 		4E03553925D9680F00F45590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553825D9680F00F45590 /* Assets.xcassets */; };
 		4E03553C25D9680F00F45590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553A25D9680F00F45590 /* LaunchScreen.storyboard */; };
+		4E5216B025E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */; };
+		4E5216B325E9931700C3CF5D /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B225E9931700C3CF5D /* Groups.swift */; };
 		4E7A24B525DF03EE00E882A3 /* GroupsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24B425DF03EE00E882A3 /* GroupsNavigationViewController.swift */; };
 		4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24B725E583F300E882A3 /* MainViewController.swift */; };
 		4E7A24BD25E5981D00E882A3 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24BC25E5981D00E882A3 /* FriendCell.swift */; };
 		4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C225E6CC7600E882A3 /* Friends.swift */; };
 		4E7A24C625E8076000E882A3 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C525E8076000E882A3 /* FriendsViewController.swift */; };
+		4E7A24CD25E81CC900E882A3 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24CC25E81CC900E882A3 /* GroupCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +32,14 @@
 		4E03553825D9680F00F45590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E03553B25D9680F00F45590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E03553D25D9680F00F45590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenForGroupTableViewController.swift; sourceTree = "<group>"; };
+		4E5216B225E9931700C3CF5D /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		4E7A24B425DF03EE00E882A3 /* GroupsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsNavigationViewController.swift; sourceTree = "<group>"; };
 		4E7A24B725E583F300E882A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4E7A24BC25E5981D00E882A3 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E7A24C225E6CC7600E882A3 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		4E7A24C525E8076000E882A3 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		4E7A24CC25E81CC900E882A3 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +76,10 @@
 				4E03553125D9680B00F45590 /* SceneDelegate.swift */,
 				4E03553325D9680B00F45590 /* LogInViewController.swift */,
 				4E03553525D9680B00F45590 /* Main.storyboard */,
-				4E7A24BF25E5986C00E882A3 /* MainScreen */,
+				4E7A24BF25E5986C00E882A3 /* MainScreenForFriendsItem */,
 				4E03553825D9680F00F45590 /* Assets.xcassets */,
 				4E03553A25D9680F00F45590 /* LaunchScreen.storyboard */,
+				4E7A24D025E81D1700E882A3 /* MainScreenForGroupItem */,
 				4E7A24C525E8076000E882A3 /* FriendsViewController.swift */,
 				4E03553D25D9680F00F45590 /* Info.plist */,
 				4E7A24B425DF03EE00E882A3 /* GroupsNavigationViewController.swift */,
@@ -80,14 +87,24 @@
 			path = VKapp;
 			sourceTree = "<group>";
 		};
-		4E7A24BF25E5986C00E882A3 /* MainScreen */ = {
+		4E7A24BF25E5986C00E882A3 /* MainScreenForFriendsItem */ = {
 			isa = PBXGroup;
 			children = (
 				4E7A24BC25E5981D00E882A3 /* FriendCell.swift */,
 				4E7A24B725E583F300E882A3 /* MainViewController.swift */,
 				4E7A24C225E6CC7600E882A3 /* Friends.swift */,
 			);
-			path = MainScreen;
+			path = MainScreenForFriendsItem;
+			sourceTree = "<group>";
+		};
+		4E7A24D025E81D1700E882A3 /* MainScreenForGroupItem */ = {
+			isa = PBXGroup;
+			children = (
+				4E7A24CC25E81CC900E882A3 /* GroupCell.swift */,
+				4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */,
+				4E5216B225E9931700C3CF5D /* Groups.swift */,
+			);
+			path = MainScreenForGroupItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +181,12 @@
 				4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */,
 				4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */,
 				4E7A24BD25E5981D00E882A3 /* FriendCell.swift in Sources */,
+				4E7A24CD25E81CC900E882A3 /* GroupCell.swift in Sources */,
 				4E03553425D9680B00F45590 /* LogInViewController.swift in Sources */,
 				4E03553025D9680B00F45590 /* AppDelegate.swift in Sources */,
 				4E7A24B525DF03EE00E882A3 /* GroupsNavigationViewController.swift in Sources */,
+				4E5216B025E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift in Sources */,
+				4E5216B325E9931700C3CF5D /* Groups.swift in Sources */,
 				4E03553225D9680B00F45590 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

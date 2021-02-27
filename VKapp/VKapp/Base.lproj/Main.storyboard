@@ -152,22 +152,39 @@
             </objects>
             <point key="canvasLocation" x="1048" y="91"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Main Screen For Group Table View Controller-->
         <scene sceneID="S7h-1E-c4X">
             <objects>
-                <tableViewController id="ayD-nB-OGq" sceneMemberID="viewController">
+                <tableViewController id="ayD-nB-OGq" customClass="MainScreenForGroupTableViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kvL-7j-bgo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sxq-iF-ij5">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellGroups" id="Sxq-iF-ij5" customClass="GroupCell" customModule="VKapp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="61.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sxq-iF-ij5" id="hc0-RF-M4G">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="61.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SlD-xU-0gP">
+                                            <rect key="frame" x="178.5" y="16" width="57" height="29.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="SlD-xU-0gP" firstAttribute="top" secondItem="hc0-RF-M4G" secondAttribute="top" constant="16" id="8pe-Er-Nym"/>
+                                        <constraint firstItem="SlD-xU-0gP" firstAttribute="centerY" secondItem="hc0-RF-M4G" secondAttribute="centerY" id="V9o-Ua-xQF"/>
+                                        <constraint firstItem="SlD-xU-0gP" firstAttribute="centerX" secondItem="hc0-RF-M4G" secondAttribute="centerX" id="ZkH-CP-kwa"/>
+                                        <constraint firstAttribute="bottom" secondItem="SlD-xU-0gP" secondAttribute="bottom" constant="16" id="lUr-l0-7Pu"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="groupsLabel" destination="SlD-xU-0gP" id="6aa-pS-01H"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -185,6 +202,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="view" destination="kvL-7j-bgo" id="yan-i5-5fH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9CV-dD-j3S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="s9M-Xd-oMh" userLabel="Exit" sceneMemberID="exit"/>
