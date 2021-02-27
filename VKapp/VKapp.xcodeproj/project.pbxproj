@@ -15,6 +15,7 @@
 		4E03553C25D9680F00F45590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553A25D9680F00F45590 /* LaunchScreen.storyboard */; };
 		4E5216B025E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */; };
 		4E5216B325E9931700C3CF5D /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B225E9931700C3CF5D /* Groups.swift */; };
+		4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */; };
 		4E7A24B525DF03EE00E882A3 /* GroupsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24B425DF03EE00E882A3 /* GroupsNavigationViewController.swift */; };
 		4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24B725E583F300E882A3 /* MainViewController.swift */; };
 		4E7A24BD25E5981D00E882A3 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24BC25E5981D00E882A3 /* FriendCell.swift */; };
@@ -34,6 +35,7 @@
 		4E03553D25D9680F00F45590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenForGroupTableViewController.swift; sourceTree = "<group>"; };
 		4E5216B225E9931700C3CF5D /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAreNotMyGroupsViewController.swift; sourceTree = "<group>"; };
 		4E7A24B425DF03EE00E882A3 /* GroupsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsNavigationViewController.swift; sourceTree = "<group>"; };
 		4E7A24B725E583F300E882A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4E7A24BC25E5981D00E882A3 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				4E03553A25D9680F00F45590 /* LaunchScreen.storyboard */,
 				4E7A24D025E81D1700E882A3 /* MainScreenForGroupItem */,
 				4E7A24C525E8076000E882A3 /* FriendsViewController.swift */,
+				4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */,
 				4E03553D25D9680F00F45590 /* Info.plist */,
 				4E7A24B425DF03EE00E882A3 /* GroupsNavigationViewController.swift */,
 			);
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E7A24C625E8076000E882A3 /* FriendsViewController.swift in Sources */,
+				4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */,
 				4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */,
 				4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */,
 				4E7A24BD25E5981D00E882A3 /* FriendCell.swift in Sources */,

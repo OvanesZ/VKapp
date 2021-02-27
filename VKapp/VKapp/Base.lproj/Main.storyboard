@@ -211,22 +211,39 @@
             </objects>
             <point key="canvasLocation" x="3000" y="491"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Screen Are Not My Groups View Controller-->
         <scene sceneID="vcf-YP-5Kr">
             <objects>
-                <tableViewController id="MuC-oB-lzV" sceneMemberID="viewController">
+                <tableViewController id="MuC-oB-lzV" customClass="ScreenAreNotMyGroupsViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yNK-9P-gTA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mwk-5I-okr">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellGroups" id="wZv-vl-gXG" customClass="GroupCell" customModule="VKapp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="61.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mwk-5I-okr" id="PUa-7j-88a">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wZv-vl-gXG" id="wrE-ph-fg1">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="61.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sRl-O6-hE2">
+                                            <rect key="frame" x="178.5" y="16" width="57" height="29.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sRl-O6-hE2" firstAttribute="centerX" secondItem="wrE-ph-fg1" secondAttribute="centerX" id="4qh-Ly-0RF"/>
+                                        <constraint firstItem="sRl-O6-hE2" firstAttribute="centerY" secondItem="wrE-ph-fg1" secondAttribute="centerY" id="NcL-Bs-rs1"/>
+                                        <constraint firstItem="sRl-O6-hE2" firstAttribute="top" secondItem="wrE-ph-fg1" secondAttribute="top" constant="16" id="UQ8-x0-Qb7"/>
+                                        <constraint firstAttribute="bottom" secondItem="sRl-O6-hE2" secondAttribute="bottom" constant="16" id="xot-1B-YUV"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="groupsLabel" destination="sRl-O6-hE2" id="YCX-zp-P2Q"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
