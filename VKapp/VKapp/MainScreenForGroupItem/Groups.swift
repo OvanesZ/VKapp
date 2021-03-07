@@ -5,9 +5,10 @@
 //  Created by Ovanes on 26.02.2021.
 //
 
-import Foundation
+import UIKit
 
 
-struct Groups {
+struct MyGroups {
     let name: String
+    let groupImage: UIImage?
 }

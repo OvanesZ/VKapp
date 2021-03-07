@@ -9,11 +9,18 @@ import UIKit
 
 class MainScreenForGroupTableViewController: UITableViewController {
     
+//    fileprivate let groups = [
+//        Groups(name: "Кино"),
+//        Groups(name: "Музыка"),
+//        Groups(name: "Хобби"),
+//        Groups(name: "Спорт")
+//    ]
+    
     fileprivate let groups = [
-        Groups(name: "Кино"),
-        Groups(name: "Музыка"),
-        Groups(name: "Хобби"),
-        Groups(name: "Спорт")
+        MyGroups(name: "Кино", groupImage: UIImage(named: "image_560708111244079913687")),
+        MyGroups(name: "Музыка", groupImage: UIImage(named: "image_560708111244079913687")),
+        MyGroups(name: "Хобби", groupImage: UIImage(named: "image_560708111244079913687")),
+        MyGroups(name: "Спорт", groupImage: UIImage(named: "image_560708111244079913687"))
     ]
     
     
@@ -45,7 +52,10 @@ class MainScreenForGroupTableViewController: UITableViewController {
        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCellGroups", for: indexPath) as? GroupCell else { return UITableViewCell() }
 
         // Configure the cell...
-        cell.groupsLabel.text = groups[indexPath.row].name
+        //cell.groupsLabel.text = groups[indexPath.row].name
+        cell.configure(with: groups[indexPath.item])
+
+        
 
         return cell
     }
