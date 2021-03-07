@@ -5,9 +5,10 @@
 //  Created by Ovanes on 24.02.2021.
 //
 
-import Foundation
+import UIKit
 
 
 struct Friends {
     let name: String
+    let friendImage: UIImage?
 }

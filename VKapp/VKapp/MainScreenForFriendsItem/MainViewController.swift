@@ -9,18 +9,33 @@ import UIKit
 
 class MainViewController: UIViewController{
     
+//    fileprivate let friends = [
+//        Friends(name: "Захарян Виктория"),
+//        Friends(name: "Шагаев Андрей"),
+//        Friends(name: "Ахмадеев Александр"),
+//        Friends(name: "Землякова Мария"),
+//        Friends(name: "Земляков Денис"),
+//        Friends(name: "Кусов Дмитрий"),
+//        Friends(name: "Кусова Елена"),
+//        Friends(name: "Зорин Андрей"),
+//        Friends(name: "Калиненко Константин"),
+//        Friends(name: "Якименко Сергей")
+//    ]
+    
     fileprivate let friends = [
-        Friends(name: "Захарян Виктория"),
-        Friends(name: "Шагаев Андрей"),
-        Friends(name: "Ахмадеев Александр"),
-        Friends(name: "Землякова Мария"),
-        Friends(name: "Земляков Денис"),
-        Friends(name: "Кусов Дмитрий"),
-        Friends(name: "Кусова Елена"),
-        Friends(name: "Зорин Андрей"),
-        Friends(name: "Калиненко Константин"),
-        Friends(name: "Якименко Сергей")
+        Friends(name: "Захарян Виктория", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Шагаев Андрей", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Ахмадеев Александр", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Землякова Мария", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Земляков Денис", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Кусов Дмитрий", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Кусова Елена", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Зорин Андрей", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Калиненко Константин", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Якименко Сергей", friendImage: UIImage(named: "image_560708111244079913687"))
     ]
+    
+    
     
     
     
@@ -65,7 +80,9 @@ extension MainViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? FriendCell else { return UITableViewCell() }
         
         
-        cell.friendLabel.text = friends[indexPath.row].name
+//        cell.friendLabel.text = friends[indexPath.row].name
+//        cell.friendImage.image = friends[indexPath.item].friendImage
+        cell.configure(with: friends[indexPath.item])
         
         return cell
         

@@ -11,7 +11,14 @@ class FriendCell: UITableViewCell {
 
 
     @IBOutlet var friendLabel: UILabel!
+    @IBOutlet weak var friendImage: UIImageView!
     
+    
+    func configure(with friend: Friends) {
+        //TODO: add some configure
+        friendLabel.text = String(describing: friend.name)
+        friendImage.image = friend.friendImage
+    }
 
     
     // Анимация нажатия
