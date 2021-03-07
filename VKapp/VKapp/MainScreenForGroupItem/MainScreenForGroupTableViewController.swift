@@ -16,7 +16,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
 //        Groups(name: "Спорт")
 //    ]
     
-    fileprivate let groups = [
+    var myGroups = [
         MyGroups(name: "Кино", groupImage: UIImage(named: "image_560708111244079913687")),
         MyGroups(name: "Музыка", groupImage: UIImage(named: "image_560708111244079913687")),
         MyGroups(name: "Хобби", groupImage: UIImage(named: "image_560708111244079913687")),
@@ -27,16 +27,28 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
     }
 
     // MARK: - Table view data source
+    
+    
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
+          
+        if let groupViewController = segue.source as? ScreenAreNotMyGroupsViewController,
+           let selectedIndexPath = groupViewController.tableView.indexPathForSelectedRow {
+            let selectedGroup = groupViewController.groups[selectedIndexPath.row]
+            
+            if !myGroups.contains(selectedGroup) {
+                myGroups.append(selectedGroup)
+                tableView.reloadData()
+            }
+        }
+    }
 
+    
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -44,7 +56,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return myGroups.count
     }
 
     
@@ -53,11 +65,22 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
         // Configure the cell...
         //cell.groupsLabel.text = groups[indexPath.row].name
-        cell.configure(with: groups[indexPath.item])
+        cell.configure(with: myGroups[indexPath.item])
 
         
 
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            myGroups.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+        }
     }
     
 
@@ -106,4 +129,4 @@ class MainScreenForGroupTableViewController: UITableViewController {
     }
     */
 
-}
+

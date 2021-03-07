@@ -10,7 +10,7 @@ import UIKit
 class ScreenAreNotMyGroupsViewController: UITableViewController {
     
     
-    fileprivate let groups = [
+    let groups = [
         MyGroups(name: "Кино 2021", groupImage: UIImage(named: "image_560708111244079913687")),
         MyGroups(name: "Музыка 90x", groupImage: UIImage(named: "image_560708111244079913687")),
         MyGroups(name: "Netflix", groupImage: UIImage(named: "image_560708111244079913687")),
@@ -47,6 +47,7 @@ class ScreenAreNotMyGroupsViewController: UITableViewController {
 
         // Configure the cell...
         cell.groupsLabel.text = groups[indexPath.row].name
+        cell.groupImage.image = groups[indexPath.item].groupImage
 
         return cell
     }

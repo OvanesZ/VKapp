@@ -8,7 +8,7 @@
 import UIKit
 
 
-struct MyGroups {
+struct MyGroups: Equatable {
     let name: String
     let groupImage: UIImage?
 }
