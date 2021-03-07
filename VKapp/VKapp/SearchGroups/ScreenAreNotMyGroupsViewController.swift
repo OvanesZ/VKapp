@@ -11,9 +11,9 @@ class ScreenAreNotMyGroupsViewController: UITableViewController {
     
     
     let groups = [
-        MyGroups(name: "Кино 2021", groupImage: UIImage(named: "image_560708111244079913687")),
-        MyGroups(name: "Музыка 90x", groupImage: UIImage(named: "image_560708111244079913687")),
-        MyGroups(name: "Netflix", groupImage: UIImage(named: "image_560708111244079913687")),
+        MyGroups(name: "Кино 2021", groupImage: UIImage(named: "ivi")),
+        MyGroups(name: "Музыка 90x", groupImage: UIImage(named: "nineteens")),
+        MyGroups(name: "Netflix", groupImage: UIImage(named: "netflix")),
         MyGroups(name: "Футбол", groupImage: UIImage(named: "image_560708111244079913687"))
     ]
     

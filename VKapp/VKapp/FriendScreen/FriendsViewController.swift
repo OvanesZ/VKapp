@@ -12,7 +12,7 @@ import UIKit
 class FriendsViewController: UICollectionViewController {
     
     
-    var displayedFriend: Friends? 
+    var displayedFriend: Friends?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,7 @@ class FriendsViewController: UICollectionViewController {
 
         // Do any additional setup after loading the view.
         title = displayedFriend?.name
+        
     }
 
     /*
@@ -54,8 +55,8 @@ class FriendsViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendViewCell", for: indexPath) as! FriendsViewCell
     
         // Configure the cell
-
-
+        
+    
         return cell
     }
 

@@ -17,11 +17,11 @@ class GroupsNavigationViewController: UINavigationController {
     }
     
 
-    @IBAction func searchGroupsButton(_ sender: UIBarButtonItem) {
-        
-        performSegue(withIdentifier: "searchGroups", sender: self)
-        
-    }
+//    @IBAction func searchGroupsButton(_ sender: UIBarButtonItem) {
+//        
+//        performSegue(withIdentifier: "searchGroups", sender: self)
+//        
+//    }
     
     /*
     // MARK: - Navigation

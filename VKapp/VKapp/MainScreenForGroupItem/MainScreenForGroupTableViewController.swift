@@ -29,6 +29,13 @@ class MainScreenForGroupTableViewController: UITableViewController {
         super.viewDidLoad()
         
     }
+    
+    @IBAction func searchGroupsButton(_ sender: UIBarButtonItem) {
+        
+        performSegue(withIdentifier: "searchGroups", sender: self)
+        
+    }
+    
 
     // MARK: - Table view data source
     
@@ -78,7 +85,8 @@ class MainScreenForGroupTableViewController: UITableViewController {
             // Delete the row from the data source
             //tableView.deleteRows(at: [indexPath], with: .fade)
             myGroups.remove(at: indexPath.row)
-            tableView.reloadData()
+            //tableView.reloadData()
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
         }
     }

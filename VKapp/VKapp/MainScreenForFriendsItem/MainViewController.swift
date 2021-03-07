@@ -9,24 +9,12 @@ import UIKit
 
 class MainViewController: UIViewController{
     
-//    fileprivate let friends = [
-//        Friends(name: "Захарян Виктория"),
-//        Friends(name: "Шагаев Андрей"),
-//        Friends(name: "Ахмадеев Александр"),
-//        Friends(name: "Землякова Мария"),
-//        Friends(name: "Земляков Денис"),
-//        Friends(name: "Кусов Дмитрий"),
-//        Friends(name: "Кусова Елена"),
-//        Friends(name: "Зорин Андрей"),
-//        Friends(name: "Калиненко Константин"),
-//        Friends(name: "Якименко Сергей")
-//    ]
     
     fileprivate let friends = [
-        Friends(name: "Захарян Виктория", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Шагаев Андрей", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Захарян Виктория", friendImage: UIImage(named: "Vika")),
+        Friends(name: "Шагаев Андрей", friendImage: UIImage(named: "Андрей")),
         Friends(name: "Ахмадеев Александр", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Землякова Мария", friendImage: UIImage(named: "image_560708111244079913687")),
+        Friends(name: "Землякова Мария", friendImage: UIImage(named: "Машка")),
         Friends(name: "Земляков Денис", friendImage: UIImage(named: "image_560708111244079913687")),
         Friends(name: "Кусов Дмитрий", friendImage: UIImage(named: "image_560708111244079913687")),
         Friends(name: "Кусова Елена", friendImage: UIImage(named: "image_560708111244079913687")),

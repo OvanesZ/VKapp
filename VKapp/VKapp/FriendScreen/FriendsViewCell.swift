@@ -13,4 +13,5 @@ class FriendsViewCell: UICollectionViewCell {
     
     @IBOutlet weak var icon: UIImageView!
     
+  
 }
