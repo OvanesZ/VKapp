@@ -17,6 +17,7 @@
 		4E5216B325E9931700C3CF5D /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B225E9931700C3CF5D /* Groups.swift */; };
 		4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */; };
 		4E59816E25F145F8000C1151 /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59816D25F145F8000C1151 /* FriendsViewCell.swift */; };
+		4E652C8425FAA31E0049A9E1 /* MainImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E652C8325FAA31E0049A9E1 /* MainImageView.swift */; };
 		4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24B725E583F300E882A3 /* MainViewController.swift */; };
 		4E7A24BD25E5981D00E882A3 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24BC25E5981D00E882A3 /* FriendCell.swift */; };
 		4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C225E6CC7600E882A3 /* Friends.swift */; };
@@ -37,6 +38,7 @@
 		4E5216B225E9931700C3CF5D /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAreNotMyGroupsViewController.swift; sourceTree = "<group>"; };
 		4E59816D25F145F8000C1151 /* FriendsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewCell.swift; sourceTree = "<group>"; };
+		4E652C8325FAA31E0049A9E1 /* MainImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainImageView.swift; sourceTree = "<group>"; };
 		4E7A24B725E583F300E882A3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4E7A24BC25E5981D00E882A3 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E7A24C225E6CC7600E882A3 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				4E59817025F14606000C1151 /* FriendScreen */,
 				4EC92A0025F560D5007A7837 /* SearchGroups */,
 				4E03553D25D9680F00F45590 /* Info.plist */,
+				4E652C8325FAA31E0049A9E1 /* MainImageView.swift */,
 			);
 			path = VKapp;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */,
 				4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */,
 				4E59816E25F145F8000C1151 /* FriendsViewCell.swift in Sources */,
+				4E652C8425FAA31E0049A9E1 /* MainImageView.swift in Sources */,
 				4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */,
 				4E7A24BD25E5981D00E882A3 /* FriendCell.swift in Sources */,
 				4E7A24CD25E81CC900E882A3 /* GroupCell.swift in Sources */,
