@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class GradientView: UIView {
+class GradientView: UIView {
     // поменяли класс слоя на CAGradientLayer
     override static var layerClass: AnyClass {
         return CAGradientLayer.self
