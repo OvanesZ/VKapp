@@ -9,25 +9,18 @@ import UIKit
 
 class MainImageView: UIView {
 
-    @IBOutlet var mainImageFriend: UIImageView!
-    @IBOutlet var mainImageShadowFriend: UIView!
+    @IBOutlet weak var mainImageFriend: UIImageView!
+   // @IBOutlet weak var mainImageShadowFriend: UIView!
+    @IBOutlet weak var mainImageFriendContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mainImageFriend.layer.cornerRadius = 16
-        mainImageFriend.layer.masksToBounds = true
+
       
+
+        mainImageFriendContainer.setShadowWithCornerRadius(cornerRadius: mainImageFriendContainer.frame.width * 0.5, shadowColor: .gray, shadowRadius: 15)
         
-        
-        mainImageShadowFriend.layer.shadowColor = UIColor.black.cgColor
-        mainImageShadowFriend.layer.shadowRadius = 10
-        mainImageShadowFriend.layer.shadowOpacity = 0.5
-        mainImageShadowFriend.layer.shadowOffset = CGSize(width: 20, height: 10)
-        mainImageShadowFriend.layer.masksToBounds = false
-        mainImageShadowFriend.backgroundColor != .clear
-      
-        
-       
+        mainImageFriend.makeMeCirle()
  
     }
   
@@ -39,4 +32,22 @@ class MainImageView: UIView {
     }
     */
 
+}
+
+
+extension UIView {
+    
+    func makeMeCirle() {
+        layer.cornerRadius = frame.width * 0.5
+        layer.masksToBounds = true
+    }
+    
+    func setShadowWithCornerRadius(cornerRadius: CGFloat, shadowColor: UIColor, shadowOffset: CGSize = .zero,  shadowOpacity: Float = 1, shadowRadius: CGFloat) {
+        layer.cornerRadius = cornerRadius
+        layer.shadowColor = shadowColor.cgColor
+        layer.shadowOffset = shadowOffset
+        layer.shadowOpacity = shadowOpacity
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+        layer.shadowRadius = shadowRadius
+    }
 }

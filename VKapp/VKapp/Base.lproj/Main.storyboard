@@ -331,27 +331,31 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-GS-bVv" customClass="MainImageView" customModule="VKapp" customModuleProvider="target">
                                                     <rect key="frame" x="361.5" y="16" width="32.5" height="32.5"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9c-MD-DIG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32.5" height="32.5"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A4J-BY-WmD">
+                                                            <rect key="frame" x="0.5" y="0.0" width="32" height="32.5"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zzq-M1-d0e">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="32" height="32.5"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="32.5" id="Boj-FN-ZWr"/>
+                                                                <constraint firstAttribute="width" constant="32" id="Gtm-qA-QNh"/>
+                                                            </constraints>
                                                         </view>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zzq-M1-d0e">
-                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="32.5"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="h9c-MD-DIG" firstAttribute="top" secondItem="UQq-GS-bVv" secondAttribute="top" id="FJ1-1M-dWB"/>
-                                                        <constraint firstAttribute="bottom" secondItem="h9c-MD-DIG" secondAttribute="bottom" id="J3f-Yq-7aD"/>
+                                                        <constraint firstItem="A4J-BY-WmD" firstAttribute="centerX" secondItem="UQq-GS-bVv" secondAttribute="centerX" id="PZa-3w-dD4"/>
                                                         <constraint firstAttribute="height" constant="32" id="WE3-Hp-jRk"/>
-                                                        <constraint firstItem="h9c-MD-DIG" firstAttribute="leading" secondItem="UQq-GS-bVv" secondAttribute="leading" id="ZJR-em-Q4m"/>
-                                                        <constraint firstAttribute="trailing" secondItem="h9c-MD-DIG" secondAttribute="trailing" id="hWU-h2-bLw"/>
+                                                        <constraint firstItem="A4J-BY-WmD" firstAttribute="centerY" secondItem="UQq-GS-bVv" secondAttribute="centerY" id="aQ0-Oe-XzY"/>
                                                         <constraint firstAttribute="width" secondItem="UQq-GS-bVv" secondAttribute="height" multiplier="1:1" id="zct-aI-EG1"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="mainImageFriend" destination="Zzq-M1-d0e" id="jMA-OJ-XyP"/>
-                                                        <outlet property="mainImageShadowFriend" destination="h9c-MD-DIG" id="AMJ-M7-BM9"/>
+                                                        <outlet property="mainImageFriendContainer" destination="A4J-BY-WmD" id="Ceb-iv-pGe"/>
                                                     </connections>
                                                 </view>
                                             </subviews>
