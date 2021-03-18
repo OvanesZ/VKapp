@@ -9,18 +9,18 @@ import UIKit
 
 class MainImageView: UIView {
 
-    @IBOutlet weak var mainImageFriend: UIImageView!
+    @IBOutlet weak var mainImageCircle: UIImageView!
    // @IBOutlet weak var mainImageShadowFriend: UIView!
-    @IBOutlet weak var mainImageFriendContainer: UIView!
+    @IBOutlet weak var mainImageContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
       
 
-        mainImageFriendContainer.setShadowWithCornerRadius(cornerRadius: mainImageFriendContainer.frame.width * 0.5, shadowColor: .gray, shadowRadius: 15)
+        mainImageContainer.setShadowWithCornerRadius(cornerRadius: mainImageContainer.frame.width * 0.5, shadowColor: .gray, shadowRadius: 5)
         
-        mainImageFriend.makeMeCirle()
+        mainImageCircle.makeMeCirle()
  
     }
   

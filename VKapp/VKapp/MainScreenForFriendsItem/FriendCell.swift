@@ -11,7 +11,7 @@ class FriendCell: UITableViewCell {
 
 
     @IBOutlet var friendLabel: UILabel!
-    @IBOutlet weak var friendImage: UIImageView!
+    @IBOutlet public var friendImage: UIImageView!
     
     
     func configure(with friend: Friends) {
