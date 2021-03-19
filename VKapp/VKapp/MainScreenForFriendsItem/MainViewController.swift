@@ -11,16 +11,16 @@ class MainViewController: UIViewController{
     
     
     fileprivate let friends = [
-        Friends(name: "Захарян Виктория", friendImage: UIImage(named: "Vika")),
-        Friends(name: "Шагаев Андрей", friendImage: UIImage(named: "Андрей")),
-        Friends(name: "Ахмадеев Александр", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Землякова Мария", friendImage: UIImage(named: "Машка")),
-        Friends(name: "Земляков Денис", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Кусов Дмитрий", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Кусова Елена", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Зорин Андрей", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Калиненко Константин", friendImage: UIImage(named: "image_560708111244079913687")),
-        Friends(name: "Якименко Сергей", friendImage: UIImage(named: "image_560708111244079913687"))
+        Friends(name: "Захарян Виктория", friendImage: UIImage(named: "Vika"), photosArray: [UIImage(named: "Vika"), UIImage(named: "1"), UIImage(named: "2")]),
+        Friends(name: "Шагаев Андрей", friendImage: UIImage(named: "image_560708111244079913687"), photosArray: [UIImage(named: "image_560708111244079913687"), UIImage(named: "3"), UIImage(named: "4")]),
+        Friends(name: "Ахмадеев Александр", friendImage: UIImage(named: "image_560708111244079913687"), photosArray: [UIImage(named: "image_560708111244079913687"), UIImage(named: "5"), UIImage(named: "6")]),
+        Friends(name: "Землякова Мария", friendImage: UIImage(named: "Машка"), photosArray: [UIImage(named: "Машка"), UIImage(named: "1"), UIImage(named: "2")]),
+//        Friends(name: "Земляков Денис", friendImage: UIImage(named: "image_560708111244079913687")),
+//        Friends(name: "Кусов Дмитрий", friendImage: UIImage(named: "image_560708111244079913687")),
+//        Friends(name: "Кусова Елена", friendImage: UIImage(named: "image_560708111244079913687")),
+//        Friends(name: "Зорин Андрей", friendImage: UIImage(named: "image_560708111244079913687")),
+//        Friends(name: "Калиненко Константин", friendImage: UIImage(named: "image_560708111244079913687")),
+//        Friends(name: "Якименко Сергей", friendImage: UIImage(named: "image_560708111244079913687"))
     ]
     
     

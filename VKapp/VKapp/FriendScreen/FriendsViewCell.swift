@@ -15,19 +15,4 @@ class FriendsViewCell: UICollectionViewCell {
     @IBOutlet var likeControllButton: LikeControlView!
     
     
-//    override func awakeFromNib() {
-//        self.awakeFromNib()
-//        likeControllButton.addTarget(self, action: #selector(likeTapped), for: .valueChanged)
-//    }
-//  
-//    
-//    @objc func likeTapped() {
-//        if likeControllButton.isLiked {
-//            print("User liked")
-//        } else {
-//            print("User disLiked")
-//        }
-//    }
-    
-    
 }

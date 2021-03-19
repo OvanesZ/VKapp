@@ -11,4 +11,5 @@ import UIKit
 struct Friends {
     let name: String
     let friendImage: UIImage?
+    let photosArray: [UIImage?] 
 }
