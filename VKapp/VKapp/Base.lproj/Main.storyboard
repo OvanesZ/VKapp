@@ -465,10 +465,10 @@
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZDY-sB-I5O" customClass="LikeControlView" customModule="VKapp" customModuleProvider="target">
-                                            <rect key="frame" x="202" y="173" width="110" height="110"/>
+                                            <rect key="frame" x="235" y="235" width="75" height="75"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="110" id="pau-94-Mex"/>
+                                                <constraint firstAttribute="width" constant="75" id="pau-94-Mex"/>
                                                 <constraint firstAttribute="width" secondItem="ZDY-sB-I5O" secondAttribute="height" multiplier="1:1" id="zB3-vE-U9S"/>
                                             </constraints>
                                         </view>
@@ -476,10 +476,10 @@
                                     <constraints>
                                         <constraint firstItem="GN3-bi-DJx" firstAttribute="centerX" secondItem="vvx-dp-GDE" secondAttribute="centerX" id="0VF-sg-HEO"/>
                                         <constraint firstAttribute="trailing" secondItem="GN3-bi-DJx" secondAttribute="trailing" id="AHg-SY-jNI"/>
-                                        <constraint firstItem="ZDY-sB-I5O" firstAttribute="top" secondItem="GN3-bi-DJx" secondAttribute="bottom" constant="-147" id="BlA-n8-y1S"/>
+                                        <constraint firstItem="ZDY-sB-I5O" firstAttribute="top" secondItem="GN3-bi-DJx" secondAttribute="bottom" constant="-85" id="BlA-n8-y1S"/>
                                         <constraint firstItem="GN3-bi-DJx" firstAttribute="centerY" secondItem="vvx-dp-GDE" secondAttribute="centerY" id="frL-8z-sFd"/>
                                         <constraint firstItem="GN3-bi-DJx" firstAttribute="leading" secondItem="vvx-dp-GDE" secondAttribute="leading" id="gRu-yE-Bpb"/>
-                                        <constraint firstItem="ZDY-sB-I5O" firstAttribute="leading" secondItem="GN3-bi-DJx" secondAttribute="trailing" constant="-118" id="gXY-bo-buB"/>
+                                        <constraint firstItem="ZDY-sB-I5O" firstAttribute="leading" secondItem="GN3-bi-DJx" secondAttribute="trailing" constant="-85" id="gXY-bo-buB"/>
                                         <constraint firstItem="GN3-bi-DJx" firstAttribute="top" secondItem="vvx-dp-GDE" secondAttribute="top" id="qm7-N9-q2v"/>
                                     </constraints>
                                 </collectionViewCellContentView>

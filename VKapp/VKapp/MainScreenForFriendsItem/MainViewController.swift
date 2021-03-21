@@ -71,6 +71,7 @@ extension MainViewController: UITableViewDataSource {
 //        cell.friendLabel.text = friends[indexPath.row].name
 //        cell.friendImage.image = friends[indexPath.item].friendImage
         cell.configure(with: friends[indexPath.item])
+        cell.selectionStyle = .none
         
         return cell
         
