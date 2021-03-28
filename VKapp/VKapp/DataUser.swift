@@ -15,3 +15,5 @@ class Session {
     
     static let shared = Session()
 }
+
+

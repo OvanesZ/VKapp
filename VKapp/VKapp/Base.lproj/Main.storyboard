@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zDk-pp-8Z9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -151,7 +151,42 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="141" y="91"/>
+            <point key="canvasLocation" x="214" y="-638"/>
+        </scene>
+        <!--Login Controller-->
+        <scene sceneID="Xk5-bJ-bkf">
+            <objects>
+                <viewController id="zDk-pp-8Z9" customClass="VKLoginController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VA8-l8-M05">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRB-0j-mXP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2gf-b5-7VD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2gf-b5-7VD" firstAttribute="trailing" secondItem="uRB-0j-mXP" secondAttribute="trailing" id="Bjj-bw-MVH"/>
+                            <constraint firstItem="2gf-b5-7VD" firstAttribute="bottom" secondItem="uRB-0j-mXP" secondAttribute="bottom" id="XQ7-nL-X7i"/>
+                            <constraint firstItem="uRB-0j-mXP" firstAttribute="top" secondItem="2gf-b5-7VD" secondAttribute="top" id="fhe-ld-WHU"/>
+                            <constraint firstItem="uRB-0j-mXP" firstAttribute="leading" secondItem="2gf-b5-7VD" secondAttribute="leading" id="lda-b3-Xpu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="uRB-0j-mXP" id="hww-qS-vJ2"/>
+                        <segue destination="3Cy-iO-Ot3" kind="presentation" identifier="ShowMainViewController" modalPresentationStyle="fullScreen" id="56a-20-t2W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sA2-9S-Utx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="90"/>
         </scene>
         <!--Friend View Controller-->
         <scene sceneID="bSp-qR-YHR">
@@ -540,6 +575,9 @@
             <point key="canvasLocation" x="2002.8985507246377" y="-185.49107142857142"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="56a-20-t2W"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="person.3.fill" catalog="system" width="128" height="61"/>
