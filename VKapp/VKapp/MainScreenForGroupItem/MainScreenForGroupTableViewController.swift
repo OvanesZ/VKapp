@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class MainScreenForGroupTableViewController: UITableViewController {
     
@@ -27,6 +28,8 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
     }
     
@@ -89,6 +92,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
         }
+    
     }
     
 

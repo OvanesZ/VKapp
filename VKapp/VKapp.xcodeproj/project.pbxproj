@@ -27,6 +27,7 @@
 		4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C225E6CC7600E882A3 /* Friends.swift */; };
 		4E7A24C625E8076000E882A3 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C525E8076000E882A3 /* FriendsViewController.swift */; };
 		4E7A24CD25E81CC900E882A3 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24CC25E81CC900E882A3 /* GroupCell.swift */; };
+		4EDBBA592619056600F413F2 /* DataFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBBA582619056600F413F2 /* DataFriend.swift */; };
 		4EE1E3902607503A00D2BDA1 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1E38F2607503900D2BDA1 /* DataUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		4E7A24C225E6CC7600E882A3 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		4E7A24C525E8076000E882A3 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		4E7A24CC25E81CC900E882A3 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		4EDBBA582619056600F413F2 /* DataFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFriend.swift; sourceTree = "<group>"; };
 		4EE1E38F2607503900D2BDA1 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				4E652C8625FC18030049A9E1 /* GradientView.swift */,
 				4EE1E38F2607503900D2BDA1 /* DataUser.swift */,
 				4E613CC52610E1A8005EBB43 /* VKLoginController.swift */,
+				4EDBBA582619056600F413F2 /* DataFriend.swift */,
 			);
 			path = VKapp;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */,
 				4EE1E3902607503A00D2BDA1 /* DataUser.swift in Sources */,
 				4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */,
+				4EDBBA592619056600F413F2 /* DataFriend.swift in Sources */,
 				4E59816E25F145F8000C1151 /* FriendsViewCell.swift in Sources */,
 				4E652C8725FC18030049A9E1 /* GradientView.swift in Sources */,
 				4E652C8425FAA31E0049A9E1 /* MainImageView.swift in Sources */,
