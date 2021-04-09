@@ -11,38 +11,37 @@ import Alamofire
 
 
 class Group: Decodable {
-    var count = 0
-    var id = 0
-    var name = ""
-    
-    
+    let items: [Items]
+}
+
+
+
+class Items: Decodable {
+    var id: Int = 0
+    var name: String = ""
+    var screenName: String = ""
+
+
+    enum CodingKeys: String, CodingKey {
+        case screenName = "screen_name"
+        case id
+        case name
+    }
+   
     convenience required init(from decoder: Decoder) throws {
         self.init()
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try values.decode(Int.self, forKey: .id)
+        self.name = try values.decode(String.self, forKey: .name)
+        self.screenName = try values.decode(String.self, forKey: .screenName)
     }
     
- 
+    
     
 }
 
 
-enum GroupKeys: String, CodingKey {
-    case response
-}
-
-enum ResponseKeys: String, CodingKey {
-    case count
-    case item
-}
-
-enum ItemKeys: String, CodingKey {
-    case id
-    case name
-}
-
-
-struct GroupResponse: Decodable {
-    let list: [Group]
-}
 
 
 

@@ -22,11 +22,20 @@ func loadGroups(token: String) {
         "count": 1,
         "v": "5.92"
     ]
-    AF.request(baseUrl + path, method: .get, parameters: params).responseJSON {
+   
+//    Alamofire.request(baseUrl + path, method: .get, parameters: params).responseData {
+//        response in
+//        guard let jsonGroups = response.value else { return }
+//
+//        let json = JSON(data: jsonGroups)
+       // print(jsonGroups)
+    
+    AF.request(baseUrl + path, method: .get, parameters: params).responseData {
         response in
-        guard let jsonGroups = response.value else { return }
-
-        print(jsonGroups)
+        guard let dataGroups = response.value else { return }
+        
+        let json = JSON(data: dataGroups)
+        
     }
 }
 
