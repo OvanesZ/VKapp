@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import Alamofire
+import SwiftyJSON
 
 
 
@@ -33,8 +34,10 @@ func loadGroups(token: String) {
     AF.request(baseUrl + path, method: .get, parameters: params).responseData {
         response in
         guard let dataGroups = response.value else { return }
+        let json = try! JSON(data: dataGroups)
         
-        let json = JSON(data: dataGroups)
+        let group = try! JSONDecoder().decode(Group.self, from: dataGroups).items
+        print(group)
         
     }
 }

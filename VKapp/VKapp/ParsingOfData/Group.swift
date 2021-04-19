@@ -8,6 +8,7 @@
 import UIKit
 import WebKit
 import Alamofire
+import SwiftyJSON
 
 
 class Group: Decodable {
