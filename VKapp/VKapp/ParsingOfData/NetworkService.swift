@@ -36,7 +36,7 @@ func loadGroups(token: String) {
         guard let dataGroups = response.value else { return }
         let json = try! JSON(data: dataGroups)
         
-        let group = try! JSONDecoder().decode(Group.self, from: dataGroups).items
+        let group = try! JSONDecoder().decode(Group.self, from: dataGroups).response
         print(group)
         
     }

@@ -12,8 +12,13 @@ import SwiftyJSON
 
 
 class Group: Decodable {
+    let response: Response
+}
+
+class Response: Decodable {
     let items: [Items]
 }
+
 
 
 
