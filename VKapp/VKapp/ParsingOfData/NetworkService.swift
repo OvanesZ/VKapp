@@ -12,45 +12,7 @@ import SwiftyJSON
 
 
 
-
-func loadGroups(token: String) {
-    let baseUrl = "https://api.vk.com"
-    let path = "/method/groups.get"
-
-    let params: Parameters = [
-        "access_token": token,
-        "extended": 1,
-        "count": 1,
-        "v": "5.92"
-    ]
-   
-//    Alamofire.request(baseUrl + path, method: .get, parameters: params).responseData {
-//        response in
-//        guard let jsonGroups = response.value else { return }
-//
-//        let json = JSON(data: jsonGroups)
-       // print(jsonGroups)
-    
-    AF.request(baseUrl + path, method: .get, parameters: params).responseData {
-        response in
-        guard let dataGroups = response.value else { return }
-        let json = try! JSON(data: dataGroups)
-        
-        let group = try! JSONDecoder().decode(Group.self, from: dataGroups).items
-        print(group)
-        
-    }
-}
-
-
-
-
-
-
-
-
-
-
+// MARK: - load friend ID
 
 func loadFriendsID(token: String) {
     let baseUrl = "https://api.vk.com"
@@ -73,15 +35,15 @@ func loadFriendsID(token: String) {
 }
 
 
+// MARK: - load photo and name friend to ID
 
-
-func loadFriendsNameAndPhoto(token: String) {
+func loadFriendsNameAndPhoto(token: String, userID: String = "34678630") {
     let baseUrl = "https://api.vk.com"
     let path = "/method/users.get"
     
     let params: Parameters = [
         "access_token": token,
-        "user_ids": 34678630,
+        "user_ids": userID,
         "fields": "photo_100",
         "v": "5.89"
     ]
@@ -94,9 +56,9 @@ func loadFriendsNameAndPhoto(token: String) {
     }
 }
 
+// MARK: - search groups
 
-
-func searchGroups(token: String, search: String) {
+func searchGroups(token: String, search: String = "электрика") {
     let baseUrl = "https://api.vk.com"
     let path = "/method/groups.search"
 
@@ -111,5 +73,25 @@ func searchGroups(token: String, search: String) {
         guard let jsonSearchGroups = response.value else { return }
 
         print(jsonSearchGroups)
+    }
+}
+
+    // MARK: - load user groups
+
+func loadGroup(token: String) {
+    let baseUrl = "https://api.vk.com"
+    let path = "/method/groups.get"
+    let params: Parameters = [
+        "access_token": token,
+        "extended": 1,
+        "count": 5,
+        "v": "5.92"
+    ]
+    
+    AF.request(baseUrl + path, method: .get, parameters: params).responseJSON {
+        response in
+        guard let jsonLoadGroups = response.value else { return }
+        
+        print(jsonLoadGroups)
     }
 }

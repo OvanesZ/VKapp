@@ -70,20 +70,23 @@ extension VKLoginController: WKNavigationDelegate {
         Session.shared.token = params["access_token"] ?? ""
         Session.shared.userID = params["user_id"] ?? ""
         
-        /// get groups of user
+  
         let userToken = Session.shared.token
-        loadGroups(token: userToken)
         
-        /// get friends ID
-        loadFriendsID(token: userToken)
-        
-        //Friend.shared.friendID = params
-        
-        /// get friend name and some data
-        loadFriendsNameAndPhoto(token: userToken)
-        
-        /// get groups by search
-        searchGroups(token: userToken, search: "music")
+                    /// get groups of user
+                    loadGroup(token: userToken)
+                    
+                    /// get friends ID
+                    loadFriendsNameAndPhoto(token: userToken, userID: "43674819")
+                    
+                    
+                    //Friend.shared.friendID = params
+                    
+                    /// get friend name and some data
+                    loadFriendsNameAndPhoto(token: userToken)
+                    
+                    /// get groups by search
+                    searchGroups(token: userToken, search: "музыка")
         
         performSegue(withIdentifier: "ShowMainViewController", sender: nil)
         decisionHandler(.cancel)

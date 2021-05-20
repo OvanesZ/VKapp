@@ -11,36 +11,36 @@ import Alamofire
 import SwiftyJSON
 
 
-class Group: Decodable {
-    let items: [Items]
-}
-
-
-
-class Items: Decodable {
-    var id: Int = 0
-    var name: String = ""
-    var screenName: String = ""
-
-
-    enum CodingKeys: String, CodingKey {
-        case screenName = "screen_name"
-        case id
-        case name
-    }
-   
-    convenience required init(from decoder: Decoder) throws {
-        self.init()
-        
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try values.decode(Int.self, forKey: .id)
-        self.name = try values.decode(String.self, forKey: .name)
-        self.screenName = try values.decode(String.self, forKey: .screenName)
-    }
-    
-    
-    
-}
+//class Group: Decodable {
+//    let items: [Items]
+//}
+//
+//
+//
+//class Items: Decodable {
+//    var id: Int = 0
+//    var name: String = ""
+//    var screenName: String = ""
+//
+//
+//    enum CodingKeys: String, CodingKey {
+//        case screenName = "screen_name"
+//        case id
+//        case name
+//    }
+//   
+//    convenience required init(from decoder: Decoder) throws {
+//        self.init()
+//        
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        self.id = try values.decode(Int.self, forKey: .id)
+//        self.name = try values.decode(String.self, forKey: .name)
+//        self.screenName = try values.decode(String.self, forKey: .screenName)
+//    }
+//    
+//    
+//    
+//}
 
 
 
