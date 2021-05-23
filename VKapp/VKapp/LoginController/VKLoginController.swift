@@ -74,7 +74,14 @@ extension VKLoginController: WKNavigationDelegate {
         let userToken = Session.shared.token
         
                     /// get groups of user
-                    loadGroup(token: userToken)
+//        loadGroup(token: userToken, completion: { result in
+//                        switch result {
+//                        case let .failure(error):
+//                            print(error)
+//                        case let .success(groups):
+//                            print(groups)
+//                        }
+//                    })
                     
                     /// get friends ID
                     loadFriendsNameAndPhoto(token: userToken, userID: "43674819")

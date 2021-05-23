@@ -10,12 +10,12 @@ import UIKit
 class ScreenAreNotMyGroupsViewController: UITableViewController {
     
     
-    let groups = [
-        MyGroups(name: "Кино 2021", groupImage: UIImage(named: "ivi")),
-        MyGroups(name: "Музыка 90x", groupImage: UIImage(named: "nineteens")),
-        MyGroups(name: "Netflix", groupImage: UIImage(named: "netflix")),
-        MyGroups(name: "Футбол", groupImage: UIImage(named: "image_560708111244079913687"))
-    ]
+//    let groups = [
+//        MyGroups(name: "Кино 2021", groupImage: UIImage(named: "ivi")),
+//        MyGroups(name: "Музыка 90x", groupImage: UIImage(named: "nineteens")),
+//        MyGroups(name: "Netflix", groupImage: UIImage(named: "netflix")),
+//        MyGroups(name: "Футбол", groupImage: UIImage(named: "image_560708111244079913687"))
+//    ]
     
     
 
@@ -38,7 +38,8 @@ class ScreenAreNotMyGroupsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        //return groups.count
+        return 1
     }
 
     
@@ -46,8 +47,8 @@ class ScreenAreNotMyGroupsViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCellGroups", for: indexPath) as? GroupCell else { return UITableViewCell() }
 
         // Configure the cell...
-        cell.groupsLabel.text = groups[indexPath.row].name
-        cell.groupImage.image = groups[indexPath.item].groupImage
+      //  cell.groupsLabel.text = groups[indexPath.row].name
+      //  cell.groupImage.image = groups[indexPath.item].groupImage
 
         return cell
     }

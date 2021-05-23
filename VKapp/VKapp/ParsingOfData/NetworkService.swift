@@ -78,20 +78,35 @@ func searchGroups(token: String, search: String = "электрика") {
 
     // MARK: - load user groups
 
-func loadGroup(token: String) {
+func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) -> Void) {
     let baseUrl = "https://api.vk.com"
     let path = "/method/groups.get"
     let params: Parameters = [
         "access_token": token,
         "extended": 1,
-        "count": 5,
+        "count": 1,
         "v": "5.92"
     ]
     
-    AF.request(baseUrl + path, method: .get, parameters: params).responseJSON {
+    AF.request(baseUrl + path, method: .get, parameters: params).response {
         response in
-        guard let jsonLoadGroups = response.value else { return }
+        switch response.result {
+        case .failure(let error):
+            completion(.failure(error))
+        case .success(let data):
+            guard let data = data,
+                  let json = try? JSON(data: data) else { return }
+            
+        //"response": {
+        //    "count": 96,
+        //    "items": [
+        //        {
         
-        print(jsonLoadGroups)
+            let groupsJson = json["response"]["items"].arrayValue
+            let groups = groupsJson.map { MyGroups(json: $0) }
+            
+            completion(.success(groups))
+        }
     }
 }
+
