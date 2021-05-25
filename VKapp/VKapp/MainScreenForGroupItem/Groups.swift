@@ -9,6 +9,7 @@ import UIKit
 import SwiftyJSON
 
 
+
 //"response": {
 //    "count": 96,
 //    "items": [
@@ -32,10 +33,13 @@ import SwiftyJSON
 
 struct MyGroups: Equatable {
     let name: String
-    let groupImage: UIImage? = nil
+   // let groupImage: UIImage? = nil
+    let photoUrl: String
+    var iconUrl: URL? { URL(string: "\(photoUrl)") }
     
     init(json: SwiftyJSON.JSON) {
         self.name = json["name"].stringValue
-       // self.groupImage = json["photo_50"]
+        self.photoUrl = json["photo_100"].stringValue
+      
     }
 }

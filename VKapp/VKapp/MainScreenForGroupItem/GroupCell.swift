@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class GroupCell: UITableViewCell {
 
@@ -15,7 +16,9 @@ class GroupCell: UITableViewCell {
     
     func configure(with groups: MyGroups) {
         groupsLabel.text = String(describing: groups.name)
-        groupImage.image = groups.groupImage
+        //groupImage.image = groups.groupImage
+        groupImage.kf.setImage(with: groups.iconUrl)
+        
     }
 
 }
