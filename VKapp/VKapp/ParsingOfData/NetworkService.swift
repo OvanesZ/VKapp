@@ -84,7 +84,7 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
     let params: Parameters = [
         "access_token": token,
         "extended": 1,
-        "count": 1,
+      //  "count": 1,
         "v": "5.92"
     ]
     

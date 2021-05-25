@@ -53,7 +53,10 @@ class MainScreenForGroupTableViewController: UITableViewController {
                         case let .failure(error):
                             print(error)
                         case let .success(groups):
-                            let newMyGroups = MyGroups(name: groups)
+                            let newMyGroups: [MyGroups] = groups
+                            self.myGroups = newMyGroups
+                            
+                            
                             
                             self.tableView.reloadData()
                         }

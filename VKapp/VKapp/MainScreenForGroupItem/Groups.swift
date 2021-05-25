@@ -36,5 +36,6 @@ struct MyGroups: Equatable {
     
     init(json: SwiftyJSON.JSON) {
         self.name = json["name"].stringValue
+       // self.groupImage = json["photo_50"]
     }
 }
