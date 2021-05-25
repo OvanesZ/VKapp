@@ -14,11 +14,12 @@
 		4E03553725D9680B00F45590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553525D9680B00F45590 /* Main.storyboard */; };
 		4E03553925D9680F00F45590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553825D9680F00F45590 /* Assets.xcassets */; };
 		4E03553C25D9680F00F45590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553A25D9680F00F45590 /* LaunchScreen.storyboard */; };
+		4E1BC6AA265D854300954477 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1BC6A9265D854300954477 /* Kingfisher */; };
 		4E5216B025E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */; };
 		4E5216B325E9931700C3CF5D /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B225E9931700C3CF5D /* Groups.swift */; };
 		4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */; };
 		4E59816E25F145F8000C1151 /* FriendsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E59816D25F145F8000C1151 /* FriendsViewCell.swift */; };
-		4E613CC32610DD7B005EBB43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4E613CC22610DD7B005EBB43 /* SwiftPackageProductDependency */; };
+		4E613CC32610DD7B005EBB43 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E613CC22610DD7B005EBB43 /* Alamofire */; };
 		4E613CC62610E1A8005EBB43 /* VKLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E613CC52610E1A8005EBB43 /* VKLoginController.swift */; };
 		4E652C8425FAA31E0049A9E1 /* MainImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E652C8325FAA31E0049A9E1 /* MainImageView.swift */; };
 		4E652C8725FC18030049A9E1 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E652C8625FC18030049A9E1 /* GradientView.swift */; };
@@ -70,7 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E613CC32610DD7B005EBB43 /* BuildFile in Frameworks */,
+				4E1BC6AA265D854300954477 /* Kingfisher in Frameworks */,
+				4E613CC32610DD7B005EBB43 /* Alamofire in Frameworks */,
 				11503918687D8E2C43E6E18E /* Pods_VKapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,7 +199,6 @@
 				82719AE800776E69E73E1FE2 /* Pods-VKapp.debug.xcconfig */,
 				79873B7F1F8C258688E57FDF /* Pods-VKapp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -220,7 +221,8 @@
 			);
 			name = VKapp;
 			packageProductDependencies = (
-				4E613CC22610DD7B005EBB43 /* SwiftPackageProductDependency */,
+				4E613CC22610DD7B005EBB43 /* Alamofire */,
+				4E1BC6A9265D854300954477 /* Kingfisher */,
 			);
 			productName = VKapp;
 			productReference = 4E03552C25D9680B00F45590 /* VKapp.app */;
@@ -250,7 +252,8 @@
 			);
 			mainGroup = 4E03552325D9680A00F45590;
 			packageReferences = (
-				4E613CC12610DD7B005EBB43 /* RemoteSwiftPackageReference */,
+				4E613CC12610DD7B005EBB43 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4E1BC6A8265D854300954477 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 4E03552D25D9680B00F45590 /* Products */;
 			projectDirPath = "";
@@ -546,7 +549,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4E613CC12610DD7B005EBB43 /* RemoteSwiftPackageReference */ = {
+		4E1BC6A8265D854300954477 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.0;
+			};
+		};
+		4E613CC12610DD7B005EBB43 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
@@ -557,9 +568,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4E613CC22610DD7B005EBB43 /* SwiftPackageProductDependency */ = {
+		4E1BC6A9265D854300954477 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4E613CC12610DD7B005EBB43 /* RemoteSwiftPackageReference */;
+			package = 4E1BC6A8265D854300954477 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		4E613CC22610DD7B005EBB43 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E613CC12610DD7B005EBB43 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
