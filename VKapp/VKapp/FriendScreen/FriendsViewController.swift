@@ -19,7 +19,7 @@ class FriendsViewController: UICollectionViewController {
         super.viewDidLoad()
 
 
-        title = displayedFriend?.name
+        title = displayedFriend?.firstName
         
     }
 

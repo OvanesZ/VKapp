@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FriendCell: UITableViewCell {
 
@@ -16,8 +17,9 @@ class FriendCell: UITableViewCell {
     
     func configure(with friend: Friends) {
         //TODO: add some configure
-        friendLabel.text = String(describing: friend.name)
-        friendImage.image = friend.friendImage
+        friendLabel.text = String(describing: (friend.firstName + " " + friend.lastName))
+      //  friendImage.image = friend.friendImage
+        friendImage.kf.setImage(with: friend.friendImage)
     }
 
     

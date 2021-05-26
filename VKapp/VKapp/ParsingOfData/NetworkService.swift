@@ -14,23 +14,36 @@ import SwiftyJSON
 
 // MARK: - load friend ID
 
-func loadFriendsID(token: String) {
+func loadFriendsID(token: String, completion: @escaping (Result<[Friends], Error>) -> Void) {
     let baseUrl = "https://api.vk.com"
     let path = "/method/friends.get"
-    
     let params: Parameters = [
         "access_token": token,
         "order": "hints",
-        "count": 5,
+        "fields": "nickname, photo_100",
+     //   "count": 5,
         "v": "5.130"
     ]
     
-    AF.request(baseUrl + path, method: .get, parameters: params).responseJSON {
+    AF.request(baseUrl + path, method: .get, parameters: params).response {
         response in
-        guard let jsonFriendsID = response.value else { return }
+        switch response.result {
+        case .failure(let error):
+            completion(.failure(error))
+        case .success(let data):
+            guard let data = data,
+                  let json = try? JSON(data: data) else { return }
         
-        print(jsonFriendsID)
-        
+//            {
+//                "response": {
+//                    "count": 197,
+//                    "items": [
+//                        {
+            let friendsJson = json["response"]["items"].arrayValue
+            let friends = friendsJson.map { Friends(json: $0) }
+            
+            completion(.success(friends))
+        }
     }
 }
 
