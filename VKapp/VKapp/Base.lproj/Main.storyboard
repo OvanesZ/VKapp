@@ -298,6 +298,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="IaT-p2-YCh">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" style="done" id="yZz-aD-xDe">
+                            <connections>
+                                <segue destination="s9M-Xd-oMh" kind="unwind" unwindAction="unwindAndClearCookiesWithSegue:" id="vAg-rw-yWQ"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Search Groups" id="Yr3-LY-gb5">
                             <connections>
                                 <action selector="SearchGroupsButton:" destination="s9M-Xd-oMh" id="FNE-d7-5oY"/>

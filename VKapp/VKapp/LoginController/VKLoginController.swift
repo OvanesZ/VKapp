@@ -21,6 +21,24 @@ class VKLoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+      
+        webView.load(buildAuthRequest())
+    }
+    
+    @IBAction func unwindAndClearCookies(segue: UIStoryboardSegue) {
+        let cookieStore = webView.configuration.websiteDataStore.httpCookieStore
+        
+        cookieStore.getAllCookies {
+            cookies in
+            
+            for cookie in cookies {
+                cookieStore.delete(cookie)
+            }
+        }
+        webView.load(buildAuthRequest())
+    }
+    
+    private func buildAuthRequest() -> URLRequest {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "oauth.vk.com"
@@ -34,12 +52,13 @@ class VKLoginController: UIViewController {
             URLQueryItem(name: "v", value: "5.92")
         ]
         
-        let request = URLRequest(url: components.url!)
-        webView.load(request)
-        
+        return URLRequest(url: components.url!)
     }
-
+    
 }
+
+
+
 
 
 extension VKLoginController: WKNavigationDelegate {

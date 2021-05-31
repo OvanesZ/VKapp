@@ -10,19 +10,7 @@ import Alamofire
 
 class MainScreenForGroupTableViewController: UITableViewController {
     
-//    fileprivate let groups = [
-//        Groups(name: "Кино"),
-//        Groups(name: "Музыка"),
-//        Groups(name: "Хобби"),
-//        Groups(name: "Спорт")
-//    ]
-    
-//    var myGroups = [
-//        MyGroups(name: "Кино", groupImage: UIImage(named: "image_560708111244079913687")),
-//        MyGroups(name: "Музыка", groupImage: UIImage(named: "image_560708111244079913687")),
-//        MyGroups(name: "Хобби", groupImage: UIImage(named: "image_560708111244079913687")),
-//        MyGroups(name: "Спорт", groupImage: UIImage(named: "image_560708111244079913687"))
-//    ]
+
     
     var myGroups: [MyGroups] = []
   
@@ -35,11 +23,11 @@ class MainScreenForGroupTableViewController: UITableViewController {
         
         
     }
+
     
     @IBAction func searchGroupsButton(_ sender: UIBarButtonItem) {
         
         performSegue(withIdentifier: "searchGroups", sender: self)
-        
     }
     
     

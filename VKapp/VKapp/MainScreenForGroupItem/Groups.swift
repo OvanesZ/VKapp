@@ -31,7 +31,6 @@ import RealmSwift
 
 
 
-
 struct MyGroups: Equatable {
     let name: String
    // let groupImage: UIImage? = nil
@@ -45,6 +44,7 @@ struct MyGroups: Equatable {
     }
 }
 
+ 
 /*
 class Session: RealmSwift.Object {
     @objc dynamic var token: String = ""
@@ -67,11 +67,13 @@ class Session: RealmSwift.Object {
 //    @objc dynamic var iconUrl: URL? { URL(string: "\(photoUrl)") }
 //
 //
+//
+//
 //    init(json: SwiftyJSON.JSON) {
 //        self.name = json["name"].stringValue
 //        self.photoUrl = json["photo_100"].stringValue
 //    }
 //}
-//
+
 
 
