@@ -237,14 +237,14 @@
                                                 <constraint firstAttribute="height" constant="40" id="hlq-FG-GiJ"/>
                                             </constraints>
                                         </imageView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-MN-hRP" customClass="MainImageView" customModule="VKapp" customModuleProvider="target">
-                                            <rect key="frame" x="329" y="0.5" width="60" height="60"/>
+                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-MN-hRP" customClass="MainImageView" customModule="VKapp" customModuleProvider="target">
+                                            <rect key="frame" x="329" y="0.5" width="45" height="45"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MFY-db-QRt">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5f3-gq-1FG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -258,7 +258,7 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="60" id="DWk-i5-Dcm"/>
+                                                <constraint firstAttribute="width" constant="45" id="DWk-i5-Dcm"/>
                                                 <constraint firstItem="MFY-db-QRt" firstAttribute="top" secondItem="wFb-MN-hRP" secondAttribute="top" id="J0r-yz-LZF"/>
                                                 <constraint firstAttribute="trailing" secondItem="MFY-db-QRt" secondAttribute="trailing" id="O5v-Eu-xOX"/>
                                                 <constraint firstItem="MFY-db-QRt" firstAttribute="leading" secondItem="wFb-MN-hRP" secondAttribute="leading" id="YqD-Ph-3hm"/>

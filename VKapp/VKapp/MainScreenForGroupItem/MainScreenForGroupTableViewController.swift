@@ -36,7 +36,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
         
         let userToken = Session.shared.token
         
-        loadGroup(token: userToken, completion: { result in
+       loadGroup(token: userToken, completion: { result in
                         switch result {
                         case let .failure(error):
                             print(error)

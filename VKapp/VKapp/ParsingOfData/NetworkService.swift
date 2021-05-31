@@ -5,10 +5,10 @@
 //  Created by Ованес on 06.04.2021.
 //
 
-import UIKit
-import WebKit
+import Foundation
 import Alamofire
 import SwiftyJSON
+
 
 
 
@@ -128,4 +128,5 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
         }
     }
 }
+
 
