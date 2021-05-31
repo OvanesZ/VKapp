@@ -71,21 +71,31 @@ func loadFriendsNameAndPhoto(token: String, userID: String = "34678630") {
 
 // MARK: - search groups
 
-func searchGroups(token: String, search: String = "электрика") {
+func searchGroups(token: String, search: String = "", completion: @escaping (Result<[MyGroups], Error>) -> Void) {
     let baseUrl = "https://api.vk.com"
     let path = "/method/groups.search"
 
     let params: Parameters = [
         "q": search,
         "access_token": token,
-        "count": 5,
+        "count": 50,  ////////////    by default return 20 groups
         "v": "5.54"
     ]
-    AF.request(baseUrl + path, method: .get, parameters: params).responseJSON {
+    AF.request(baseUrl + path, method: .get, parameters: params).response {
         response in
-        guard let jsonSearchGroups = response.value else { return }
-
-        print(jsonSearchGroups)
+        switch response.result {
+        case .failure(let error):
+            completion(.failure(error))
+        case .success(let data):
+            guard let data = data,
+                  let jsonSearchGroups = try? JSON(data: data) else { return }
+            
+            
+            let searchGroupsJson = jsonSearchGroups["response"]["items"].arrayValue
+            let searchGroups = searchGroupsJson.map { MyGroups(json: $0) }
+            
+            completion(.success(searchGroups))
+        }
     }
 }
 
@@ -110,11 +120,7 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
             guard let data = data,
                   let json = try? JSON(data: data) else { return }
             
-        //"response": {
-        //    "count": 96,
-        //    "items": [
-        //        {
-        
+     
             let groupsJson = json["response"]["items"].arrayValue
             let groups = groupsJson.map { MyGroups(json: $0) }
             

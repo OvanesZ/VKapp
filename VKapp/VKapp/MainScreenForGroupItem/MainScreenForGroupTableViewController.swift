@@ -89,8 +89,6 @@ class MainScreenForGroupTableViewController: UITableViewController {
         cell.groupsLabel.text = myGroups[indexPath.row].name
         cell.configure(with: myGroups[indexPath.item])
 
-
-
         return cell
     }
     
