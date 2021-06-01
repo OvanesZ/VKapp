@@ -13,14 +13,26 @@ class FriendsViewController: UICollectionViewController {
     
     
     var displayedFriend: Friends?
-   
+    var photoFriend: [Photo] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        title = displayedFriend?.firstName
         
+        let userToken = Session.shared.token
+        
+        loadPhoto(token: userToken, completion: { result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(photo):
+                let photoFriendNew: [Photo] = photo
+                self.photoFriend = photoFriendNew
+                
+                
+                self.collectionView.reloadData()
+            }
+        })
+        title = "\(displayedFriend!.firstName) \(displayedFriend!.lastName)"
     }
 
 
@@ -33,16 +45,22 @@ class FriendsViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return displayedFriend?.photosArray.count ?? 0
+       // return displayedFriend?.photosArray.count ?? 0
+        return photoFriend.count
 
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendViewCell", for: indexPath) as? FriendsViewCell,
-              let photos = displayedFriend?.photosArray[indexPath.item] else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FriendViewCell", for: indexPath) as? FriendsViewCell else { return UICollectionViewCell() }
+        
+        
+        
+       cell.configure(with: photoFriend[indexPath.item])
+        
+           
     
 
-        cell.icon.image = photos
+     
         
       
         return cell

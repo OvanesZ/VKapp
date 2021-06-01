@@ -24,12 +24,14 @@ class Session {
 class Session: RealmSwift.Object {
     @objc dynamic var token: String = ""
     @objc dynamic var userID: String = ""
+    @objc dynamic var friendID: Int = 0
     
-    convenience init(token: String, userID: String) {
+    convenience init(token: String, userID: String, friendID: Int) {
         self.init()
         
         self.token = token
         self.userID = userID
+        self.friendID = friendID
     }
     public static let shared = Session()
 }

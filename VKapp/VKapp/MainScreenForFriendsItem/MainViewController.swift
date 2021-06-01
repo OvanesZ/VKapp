@@ -28,6 +28,7 @@ class MainViewController: UIViewController{
     fileprivate var friends: [Friends] = []
     
     
+    
     @IBOutlet var tableView: UITableView!
 
     
@@ -36,6 +37,7 @@ class MainViewController: UIViewController{
         super.viewWillAppear(animated)
         
         let userToken = Session.shared.token
+       
         
         loadFriendsID(token: userToken, completion: { result in
             switch result {
@@ -44,6 +46,7 @@ class MainViewController: UIViewController{
             case let .success(friends):
                 let newListMyFriends: [Friends] = friends
                 self.friends = newListMyFriends
+                
                 
                 self.tableView.reloadData()
             }
@@ -55,6 +58,7 @@ class MainViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
 
         tableView.dataSource = self
         

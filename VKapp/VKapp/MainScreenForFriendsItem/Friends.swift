@@ -35,10 +35,15 @@ struct Friends {
     let friendImageUrlText: String
     var friendImage: URL? { URL(string: "\(friendImageUrlText)") }
     let photosArray: [UIImage?] = []
+    let friendID: Int
     
     init(json: SwiftyJSON.JSON) {
         self.firstName = json["first_name"].stringValue
         self.lastName = json["last_name"].stringValue
         self.friendImageUrlText = json["photo_100"].stringValue
+        self.friendID = json["id"].intValue
     }
 }
+
+
+

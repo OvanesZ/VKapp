@@ -16,6 +16,7 @@
 		4E03553C25D9680F00F45590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03553A25D9680F00F45590 /* LaunchScreen.storyboard */; };
 		4E1BC6AA265D854300954477 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1BC6A9265D854300954477 /* Kingfisher */; };
 		4E221C8A2664B93700CBBC8F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E221C892664B93700CBBC8F /* RealmSwift */; };
+		4E221C90266685DC00CBBC8F /* PhotoFriends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E221C8F266685DC00CBBC8F /* PhotoFriends.swift */; };
 		4E5216B025E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */; };
 		4E5216B325E9931700C3CF5D /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B225E9931700C3CF5D /* Groups.swift */; };
 		4E5216B725EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */; };
@@ -45,6 +46,7 @@
 		4E03553825D9680F00F45590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E03553B25D9680F00F45590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E03553D25D9680F00F45590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E221C8F266685DC00CBBC8F /* PhotoFriends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFriends.swift; sourceTree = "<group>"; };
 		4E5216AF25E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenForGroupTableViewController.swift; sourceTree = "<group>"; };
 		4E5216B225E9931700C3CF5D /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		4E5216B625EABC6A00C3CF5D /* ScreenAreNotMyGroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAreNotMyGroupsViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				4E7A24C525E8076000E882A3 /* FriendsViewController.swift */,
 				4E59816D25F145F8000C1151 /* FriendsViewCell.swift */,
+				4E221C8F266685DC00CBBC8F /* PhotoFriends.swift */,
 			);
 			path = FriendScreen;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				4E652C8A25FE8F790049A9E1 /* LikeControlView.swift in Sources */,
 				4E03553025D9680B00F45590 /* AppDelegate.swift in Sources */,
 				4E6AF316261C82A30078A3DE /* NetworkService.swift in Sources */,
+				4E221C90266685DC00CBBC8F /* PhotoFriends.swift in Sources */,
 				4E5216B025E9920E00C3CF5D /* MainScreenForGroupTableViewController.swift in Sources */,
 				4E5216B325E9931700C3CF5D /* Groups.swift in Sources */,
 				4E03553225D9680B00F45590 /* SceneDelegate.swift in Sources */,
