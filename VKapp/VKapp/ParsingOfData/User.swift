@@ -24,9 +24,9 @@ class Session {
 class Session: RealmSwift.Object {
     @objc dynamic var token: String = ""
     @objc dynamic var userID: String = ""
-    @objc dynamic var friendID: Int = 0
+    @objc dynamic var friendID: String = ""
     
-    convenience init(token: String, userID: String, friendID: Int) {
+    convenience init(token: String, userID: String, friendID: String) {
         self.init()
         
         self.token = token

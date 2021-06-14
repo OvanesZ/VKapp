@@ -132,9 +132,9 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
 
 // MARK: - get all photos for users
 
-
+// userID: String, = "34678630"
     
-func loadPhoto(token: String, userID: String = "34678630", completion: @escaping (Result<[Photo], Error>) -> Void) {
+func loadPhoto(token: String, completion: @escaping (Result<[Photo], Error>) -> Void) {
     let baseUrl = "https://api.vk.com"
     let path = "/method/photos.getAll"
     let params: Parameters = [
@@ -142,7 +142,7 @@ func loadPhoto(token: String, userID: String = "34678630", completion: @escaping
         //"extended": 1,
       //  "count": 1,
         "v": "5.77",
-        "owner_id": userID
+     //   "owner_id": userID
     ]
     
     AF.request(baseUrl + path, method: .get, parameters: params).response {

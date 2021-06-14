@@ -31,49 +31,32 @@ import RealmSwift
 
 
 
-struct MyGroups: Equatable {
-    let name: String
-   // let groupImage: UIImage? = nil
-    let photoUrl: String
-    var iconUrl: URL? { URL(string: "\(photoUrl)") }
-    
-    init(json: SwiftyJSON.JSON) {
-        self.name = json["name"].stringValue
-        self.photoUrl = json["photo_100"].stringValue
-      
-    }
-}
-
- 
-/*
-class Session: RealmSwift.Object {
-    @objc dynamic var token: String = ""
-    @objc dynamic var userID: String = ""
-    
-    convenience init(token: String, userID: String) {
-        self.init()
-        
-        self.token = token
-        self.userID = userID
-    }
-    public static let shared = Session()
-}
-*/
-
-
-//class MyGroups: RealmSwift.Object {
-//    @objc dynamic var name: String = ""
-//    @objc dynamic var photoUrl: String = ""
-//    @objc dynamic var iconUrl: URL? { URL(string: "\(photoUrl)") }
-//
-//
-//
+//struct MyGroups: Equatable {
+//    let name: String
+//   // let groupImage: UIImage? = nil
+//    let photoUrl: String
+//    var iconUrl: URL? { URL(string: "\(photoUrl)") }
 //
 //    init(json: SwiftyJSON.JSON) {
 //        self.name = json["name"].stringValue
 //        self.photoUrl = json["photo_100"].stringValue
+//
 //    }
 //}
+
+ 
+class MyGroups: Object {
+    @objc dynamic var name: String = ""
+    @objc dynamic var photoUrl: String = ""
+    @objc dynamic var iconUrl: URL? { URL(string: "\(photoUrl)") }
+    
+    convenience init(json: SwiftyJSON.JSON) {
+        self.init()
+        
+        self.name = json["name"].stringValue
+        self.photoUrl = json["photo_100"].stringValue
+    }
+}
 
 
 

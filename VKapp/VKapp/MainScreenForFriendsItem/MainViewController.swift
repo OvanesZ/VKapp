@@ -46,11 +46,24 @@ class MainViewController: UIViewController{
             case let .success(friends):
                 let newListMyFriends: [Friends] = friends
                 self.friends = newListMyFriends
-                
+               // Session.shared.userID = params["user_id"] ?? ""
+//
+//                195 : Friends
+//                  - firstName : "Kristina"
+//                  - lastName : "Totskoynova"
+//                  - friendImageUrlText : "https://vk.com/images/camera_100.png"
+//                  - photosArray : 0 elements
+//                  - friendID : 514977720
+              
+//                func cinfigureID(with friend: Friends) {
+//                    let fr = String(describing: friend.friendID)
+//                    Session.shared.friendID = fr
+//                }
                 
                 self.tableView.reloadData()
             }
         })
+        
     }
     
     

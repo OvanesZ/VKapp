@@ -22,6 +22,7 @@ class FriendCell: UITableViewCell {
         friendImage.kf.setImage(with: friend.friendImage)
     }
 
+
     
     // Анимация нажатия
 //    override func setSelected(_ selected: Bool, animated: Bool) {
