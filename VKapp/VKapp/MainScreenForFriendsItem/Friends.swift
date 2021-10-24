@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import RealmSwift
 
 //
 //{
@@ -29,22 +30,38 @@ import SwiftyJSON
 
 
 
-struct Friends {
-    let firstName: String
-    let lastName: String
-    let friendImageUrlText: String
-    var friendImage: URL? { URL(string: "\(friendImageUrlText)") }
-    let photosArray: [UIImage?] = []
-    let friendID: String
+//struct Friends {
+//    let firstName: String
+//    let lastName: String
+//    let friendImageUrlText: String
+//    var friendImage: URL? { URL(string: "\(friendImageUrlText)") }
+//    let photosArray: [UIImage?] = []
+//    let friendID: String
+//
+//    init(json: SwiftyJSON.JSON) {
+//        self.firstName = json["first_name"].stringValue
+//        self.lastName = json["last_name"].stringValue
+//        self.friendImageUrlText = json["photo_100"].stringValue
+//        self.friendID = json["id"].stringValue
+//    }
+//}
+
+class Friends: Object {
+    @objc dynamic var firstName = ""
+    @objc dynamic var lastName = ""
+    @objc dynamic var friendImageUrlText = ""
+    @objc dynamic var friendImage: URL? { URL(string: "\(friendImageUrlText)") }
+    var photosArray: [UIImage?] = []
+    @objc dynamic var friendID = ""
     
-    init(json: SwiftyJSON.JSON) {
+    convenience init(json: SwiftyJSON.JSON) {
+        self.init()
+        
         self.firstName = json["first_name"].stringValue
         self.lastName = json["last_name"].stringValue
         self.friendImageUrlText = json["photo_100"].stringValue
         self.friendID = json["id"].stringValue
     }
 }
-
-
 
 

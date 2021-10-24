@@ -7,25 +7,17 @@
 
 import UIKit
 import Alamofire
+import RealmSwift
 
 class MainViewController: UIViewController{
     
-    
-//    fileprivate let friends = [
-//        Friends(name: "Захарян Виктория", friendImage: UIImage(named: "Vika"), photosArray: [UIImage(named: "Vika"), UIImage(named: "1"), UIImage(named: "2")]),
-//        Friends(name: "Шагаев Андрей", friendImage: UIImage(named: "image_560708111244079913687"), photosArray: [UIImage(named: "image_560708111244079913687"), UIImage(named: "3"), UIImage(named: "4")]),
-//        Friends(name: "Ахмадеев Александр", friendImage: UIImage(named: "image_560708111244079913687"), photosArray: [UIImage(named: "image_560708111244079913687"), UIImage(named: "5"), UIImage(named: "6")]),
-//        Friends(name: "Землякова Мария", friendImage: UIImage(named: "Машка"), photosArray: [UIImage(named: "Машка"), UIImage(named: "1"), UIImage(named: "2")]),
-//        Friends(name: "Земляков Денис", friendImage: UIImage(named: "image_560708111244079913687")),
-//        Friends(name: "Кусов Дмитрий", friendImage: UIImage(named: "image_560708111244079913687")),
-//        Friends(name: "Кусова Елена", friendImage: UIImage(named: "image_560708111244079913687")),
-//        Friends(name: "Зорин Андрей", friendImage: UIImage(named: "image_560708111244079913687")),
-//        Friends(name: "Калиненко Константин", friendImage: UIImage(named: "image_560708111244079913687")),
-//        Friends(name: "Якименко Сергей", friendImage: UIImage(named: "image_560708111244079913687"))
- //   ]
+
     
     
-    fileprivate var friends: [Friends] = []
+    var friends: [Friends] = []
+    
+    private lazy var friend: Results<Friends>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(Friends.self)
+    
     
     
     
@@ -43,22 +35,12 @@ class MainViewController: UIViewController{
             switch result {
             case let .failure(error):
                 print(error)
-            case let .success(friends):
-                let newListMyFriends: [Friends] = friends
+            case let .success(friend):
+                try? RealmService.save(items: friend, configuration: RealmService.deleteIfMigration)
+                
+                let newListMyFriends: [Friends] = friend
                 self.friends = newListMyFriends
-               // Session.shared.userID = params["user_id"] ?? ""
-//
-//                195 : Friends
-//                  - firstName : "Kristina"
-//                  - lastName : "Totskoynova"
-//                  - friendImageUrlText : "https://vk.com/images/camera_100.png"
-//                  - photosArray : 0 elements
-//                  - friendID : 514977720
-              
-//                func cinfigureID(with friend: Friends) {
-//                    let fr = String(describing: friend.friendID)
-//                    Session.shared.friendID = fr
-//                }
+               
                 
                 self.tableView.reloadData()
             }
@@ -106,7 +88,7 @@ extension MainViewController: UITableViewDataSource {
     // numberOfRowsInSection - Количество строк в секции
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        return friend?.count ?? 0
     }
     
     //  cellForRowAt indexPath - создание ячейки
@@ -114,13 +96,20 @@ extension MainViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? FriendCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath) as? FriendCell,
+              let friends = friend?[indexPath.item] else { return UITableViewCell() }
+        
+        cell.configure(with: friends)
+        
+        
+        
+        
         
         
 //        cell.friendLabel.text = friends[indexPath.row].name
 //        cell.friendImage.image = friends[indexPath.item].friendImage
-        cell.configure(with: friends[indexPath.item])
-        cell.selectionStyle = .none
+//        cell.configure(with: friends[indexPath.item])
+//        cell.selectionStyle = .none
         
         return cell
         
