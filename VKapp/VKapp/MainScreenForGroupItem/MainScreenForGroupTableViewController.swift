@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import Alamofire
+//import Alamofire
+import RealmSwift
 
 class MainScreenForGroupTableViewController: UITableViewController {
     
@@ -14,14 +15,11 @@ class MainScreenForGroupTableViewController: UITableViewController {
     
     var myGroups: [MyGroups] = []
   
+    private lazy var group: Results<MyGroups>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(MyGroups.self)
     
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
     }
 
     
@@ -40,13 +38,12 @@ class MainScreenForGroupTableViewController: UITableViewController {
                         switch result {
                         case let .failure(error):
                             print(error)
-                        case let .success(groups):
-                            let newMyGroups: [MyGroups] = groups
+                        case let .success(group):
+                            try? RealmService.save(items: group, configuration: RealmService.deleteIfMigration)
+                          
+                            let newMyGroups: [MyGroups] = group
                             self.myGroups = newMyGroups
-                            
-                            
-                            
-                            self.tableView.reloadData()
+                              self.tableView.reloadData()
                         }
                     })
         
@@ -78,18 +75,24 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myGroups.count
+        return group?.count ?? 0
     }
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCellGroups", for: indexPath) as? GroupCell else { return UITableViewCell() }
+       guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCellGroups", for: indexPath) as? GroupCell,
+        let groups = group?[indexPath.item] else { return UITableViewCell() }
+       
 
+        cell.configure(with: groups)
         // Configure the cell...
-        cell.groupsLabel.text = myGroups[indexPath.row].name
-        cell.configure(with: myGroups[indexPath.item])
+//        cell.groupsLabel.text = group?[indexPath.row].name
+//        cell.configure(with: myGroups[indexPath.item])
 
+    
+        
         return cell
+    }
     }
     
     
@@ -103,7 +106,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
 //        }
 //        }
 //
-   }
+   
     
 
 
