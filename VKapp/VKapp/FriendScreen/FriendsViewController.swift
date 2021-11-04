@@ -14,13 +14,19 @@ class FriendsViewController: UICollectionViewController {
     
     var displayedFriend: Friends?
     var photoFriend: [Photo] = []
-
+    
+    private let networkSession = NetworkService()
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let userToken = Session.shared.token
         
-        loadPhoto(token: userToken, completion: { result in
+        networkSession.loadPhoto(token: userToken, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)

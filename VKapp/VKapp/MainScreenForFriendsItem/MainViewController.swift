@@ -18,6 +18,7 @@ class MainViewController: UIViewController{
     
     private lazy var friend: Results<Friends>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(Friends.self)
     
+    private let networkSession = NetworkService()
     
     
     
@@ -31,16 +32,14 @@ class MainViewController: UIViewController{
         let userToken = Session.shared.token
        
         
-        loadFriendsID(token: userToken, completion: { result in
+        networkSession.loadFriendsID(token: userToken, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)
             case let .success(friend):
-                try? RealmService.save(items: friend, configuration: RealmService.deleteIfMigration)
+                try? RealmService.save(items: friend, update: .modified)
                 
-                let newListMyFriends: [Friends] = friend
-                self.friends = newListMyFriends
-               
+             
                 
                 self.tableView.reloadData()
             }

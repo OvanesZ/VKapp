@@ -16,6 +16,9 @@ class MainScreenForGroupTableViewController: UITableViewController {
     var myGroups: [MyGroups] = []
   
     private lazy var group: Results<MyGroups>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(MyGroups.self)
+    private let networkSession = NetworkService()
+    
+    
     
     
     override func viewDidLoad() {
@@ -34,35 +37,43 @@ class MainScreenForGroupTableViewController: UITableViewController {
         
         let userToken = Session.shared.token
         
-       loadGroup(token: userToken, completion: { result in
-                        switch result {
-                        case let .failure(error):
-                            print(error)
-                        case let .success(group):
-                            try? RealmService.save(items: group, configuration: RealmService.deleteIfMigration)
-                          
-                            let newMyGroups: [MyGroups] = group
-                            self.myGroups = newMyGroups
-                              self.tableView.reloadData()
-                        }
-                    })
-        
+//       loadGroup(token: userToken, completion: { result in
+//                        switch result {
+//                        case let .failure(error):
+//                            print(error)
+//                        case let .success(group):
+//                            try? RealmService.save(items: group, configuration: RealmService.deleteIfMigration)
+//
+//                            let newMyGroups: [MyGroups] = group
+//                            self.myGroups = newMyGroups
+//                              self.tableView.reloadData()
+//                        }
+//                    })
+        networkSession.loadGroup(token: userToken, completion: { [weak self] result in
+            switch result {
+            case let .failure(error):
+                print(error)
+            case let .success(group):
+                try? RealmService.save(items: group)
+                self?.tableView.reloadData()
+            }
+        })
     }
 
     // MARK: - Table view data source
     
     
-//    @IBAction func addGroup(segue: UIStoryboardSegue) {
-//
-//        if let groupViewController = segue.source as? ScreenAreNotMyGroupsViewController,
-//           let selectedIndexPath = groupViewController.tableView.indexPathForSelectedRow {
-//            let selectedGroup = groupViewController.groups[selectedIndexPath.row]
-//
-//            if !myGroups.contains(selectedGroup) {
-//                myGroups.append(selectedGroup)
-//                tableView.reloadData()
-//            }
-//        }
+    //    @IBAction func addGroup(segue: UIStoryboardSegue) {
+    //
+    //        if let groupViewController = segue.source as? ScreenAreNotMyGroupsViewController,
+    //           let selectedIndexPath = groupViewController.tableView.indexPathForSelectedRow {
+    //            let selectedGroup = groupViewController.groups[selectedIndexPath.row]
+    //
+    //            if !myGroups.contains(selectedGroup) {
+    //                myGroups.append(selectedGroup)
+    //                tableView.reloadData()
+    //            }
+    //        }
 //    }
 //
 //
@@ -80,20 +91,20 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCellGroups", for: indexPath) as? GroupCell,
-        let groups = group?[indexPath.item] else { return UITableViewCell() }
-       
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyCellGroups", for: indexPath) as? GroupCell,
+              let groups = group?[indexPath.item] else { return UITableViewCell() }
+        
+        
         cell.configure(with: groups)
         // Configure the cell...
-//        cell.groupsLabel.text = group?[indexPath.row].name
-//        cell.configure(with: myGroups[indexPath.item])
-
-    
+        //        cell.groupsLabel.text = group?[indexPath.row].name
+        //        cell.configure(with: myGroups[indexPath.item])
+        
+        
         
         return cell
     }
-    }
+}
     
     
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

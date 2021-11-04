@@ -19,6 +19,7 @@ class ScreenAreNotMyGroupsViewController: UITableViewController {
     
     var groups: [MyGroups] = []
     
+    private let networkSession = NetworkService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +66,7 @@ extension ScreenAreNotMyGroupsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
        
         
-        searchGroups(token: userToken, search: searchText, completion: { result in
+        networkSession.searchGroups(token: userToken, search: searchText, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)

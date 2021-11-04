@@ -10,7 +10,7 @@ import Alamofire
 import SwiftyJSON
 
 
-
+class NetworkService {
 
 // MARK: - load friend ID
 
@@ -161,4 +161,5 @@ func loadPhoto(token: String, completion: @escaping (Result<[Photo], Error>) -> 
             completion(.success(friendPhoto))
         }
     }
+}
 }

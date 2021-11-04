@@ -50,6 +50,12 @@ class MyGroups: Object {
     @objc dynamic var photoUrl: String = ""
     @objc dynamic var iconUrl: URL? { URL(string: "\(photoUrl)") }
     
+//    @objc dynamic var id = 0
+//
+//    override static func primaryKey() -> String? {
+//        return "name"
+//    }
+    
     convenience init(json: SwiftyJSON.JSON) {
         self.init()
         

@@ -54,6 +54,11 @@ class Friends: Object {
     var photosArray: [UIImage?] = []
     @objc dynamic var friendID = ""
     
+    
+    override static func primaryKey() -> String? {
+        return "friendID"
+    }
+    
     convenience init(json: SwiftyJSON.JSON) {
         self.init()
         
