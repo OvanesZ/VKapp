@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import RealmSwift
 
 
 /*
@@ -34,14 +35,12 @@ import SwiftyJSON
 
 
 class Photo {
-  //  let albumId: Int
-   // let date: Date
+
     private let url: String
     var iconUrl: URL? { URL(string: "\(url)")}
     
     init(json: JSON) {
-      //  self.albumId = json["album_id"].intValue
-     //   self.date = Date(timeIntervalSince1970: json["date"].doubleValue)
+
         let firstJson = json["sizes"].arrayValue.first
         self.url = firstJson?["url"].stringValue ?? ""
     }

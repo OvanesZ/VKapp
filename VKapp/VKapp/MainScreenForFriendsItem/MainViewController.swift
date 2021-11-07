@@ -64,7 +64,7 @@ class MainViewController: UIViewController{
            let cellIndexPath = tableView.indexPath(for: senderCell),
            let friendViewController = segue.destination as? FriendsViewController {
             
-            let selectedFriend = friends[cellIndexPath.row]
+            let selectedFriend = friend?[cellIndexPath.row]
             friendViewController.displayedFriend = selectedFriend
             
             

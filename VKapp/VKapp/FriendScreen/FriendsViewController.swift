@@ -26,7 +26,10 @@ class FriendsViewController: UICollectionViewController {
         
         let userToken = Session.shared.token
         
-        networkSession.loadPhoto(token: userToken, completion: { result in
+        let ownerID = displayedFriend!.friendID
+  
+        
+        networkSession.loadPhoto(token: userToken, owner: ownerID, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)

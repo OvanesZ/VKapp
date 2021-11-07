@@ -67,6 +67,9 @@ class Friends: Object {
         self.friendImageUrlText = json["photo_100"].stringValue
         self.friendID = json["id"].stringValue
     }
+    public static let shared = Friends()
 }
+
+
 
 

@@ -11,6 +11,8 @@ import SwiftyJSON
 
 
 class NetworkService {
+    
+    private let token = Session.shared.token
 
 // MARK: - load friend ID
 
@@ -34,13 +36,11 @@ func loadFriendsID(token: String, completion: @escaping (Result<[Friends], Error
             guard let data = data,
                   let json = try? JSON(data: data) else { return }
         
-//            {
-//                "response": {
-//                    "count": 197,
-//                    "items": [
-//                        {
+
             let friendsJson = json["response"]["items"].arrayValue
             let friends = friendsJson.map { Friends(json: $0) }
+            
+          
             
             completion(.success(friends))
         }
@@ -132,17 +132,18 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
 
 // MARK: - get all photos for users
 
-// userID: String, = "34678630"
+//private let owner = friendsID
     
-func loadPhoto(token: String, completion: @escaping (Result<[Photo], Error>) -> Void) {
+    func loadPhoto(token: String, owner: String, completion: @escaping (Result<[Photo], Error>) -> Void) {
     let baseUrl = "https://api.vk.com"
-    let path = "/method/photos.getAll"
+    let path = "/method/photos.get"
     let params: Parameters = [
         "access_token": token,
-        //"extended": 1,
-      //  "count": 1,
-        "v": "5.77",
-     //   "owner_id": userID
+        "extended": 1,
+        "v": "5.131",
+        "owner_id": owner,
+        "album_id": "profile",
+        "photo_sizes": 1
     ]
     
     AF.request(baseUrl + path, method: .get, parameters: params).response {
