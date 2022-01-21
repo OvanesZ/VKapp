@@ -124,6 +124,7 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
             let groupsJson = json["response"]["items"].arrayValue
             let groups = groupsJson.map { MyGroups(json: $0) }
             
+            
             completion(.success(groups))
         }
     }

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import Alamofire
+import Alamofire
 import RealmSwift
 
 class MainScreenForGroupTableViewController: UITableViewController {
@@ -54,7 +54,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
             case let .failure(error):
                 print(error)
             case let .success(group):
-                try? RealmService.save(items: group)
+                try? RealmService.save(items: group, update: .modified)
                 self?.tableView.reloadData()
             }
         })

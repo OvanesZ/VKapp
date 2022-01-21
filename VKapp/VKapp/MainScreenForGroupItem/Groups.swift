@@ -49,6 +49,11 @@ class MyGroups: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var photoUrl: String = ""
     @objc dynamic var iconUrl: URL? { URL(string: "\(photoUrl)") }
+    @objc dynamic var id: String = ""
+
+    override static func primaryKey() -> String? {
+        return "id"
+    }
     
 
     
@@ -57,6 +62,7 @@ class MyGroups: Object {
         
         self.name = json["name"].stringValue
         self.photoUrl = json["photo_100"].stringValue
+        self.id = json["id"].stringValue
     }
 }
 
