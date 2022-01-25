@@ -43,24 +43,13 @@ class MainViewController: UIViewController{
                     
                     self.tableView.reloadData()
                     try self.realm?.write({
-                        self.realm?.add(newFriend)
+                        self.realm?.add(newFriend, update: Realm.UpdatePolicy.all)
+                        print(self.realm?.configuration.fileURL ?? "")
                     })
                 } catch {
                     print(error)
                 }
             }
-        
-//      networkSession.loadFriendsID(token: userToken, completion: { result in
-//            switch result {
-//            case let .failure(error):
-//                print(error)
-//            case let .success(friend):
-//                try? RealmService.save(items: friend, update: .modified)
-//
-//
-//                self.tableView.reloadData()
-//            }
-//        })
     })
        
         
@@ -72,9 +61,9 @@ class MainViewController: UIViewController{
         
         let friendObjects = realm.objects(Friends.self)
         
-        try? realm.write({
-            self.realm?.deleteAll()
-        })
+//        try? realm.write({
+//            self.realm?.deleteAll()
+//        })
         
         notificationToken = friendObjects.observe { change in
         

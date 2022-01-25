@@ -7,17 +7,17 @@
 
 import UIKit
 import Alamofire
+import Realm
 import RealmSwift
 
 class MainScreenForGroupTableViewController: UITableViewController {
     
 
-    
-    var myGroups: [MyGroups] = []
-  
-    private lazy var group: Results<MyGroups>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(MyGroups.self)
+    var notificationToken: NotificationToken?
+    private var myGroups: [MyGroups]?
+    private var group: [MyGroups]?
     private let networkSession = NetworkService()
-    
+    private let realm = try? Realm()
     
     
     
@@ -37,48 +37,66 @@ class MainScreenForGroupTableViewController: UITableViewController {
         
         let userToken = Session.shared.token
         
-//       loadGroup(token: userToken, completion: { result in
-//                        switch result {
-//                        case let .failure(error):
-//                            print(error)
-//                        case let .success(group):
-//                            try? RealmService.save(items: group, configuration: RealmService.deleteIfMigration)
-//
-//                            let newMyGroups: [MyGroups] = group
-//                            self.myGroups = newMyGroups
-//                              self.tableView.reloadData()
-//                        }
-//                    })
-        networkSession.loadGroup(token: userToken, completion: { [weak self] result in
+
+        networkSession.loadGroup(token: userToken, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)
-            case let .success(group):
-                try? RealmService.save(items: group, update: .modified)
-                self?.tableView.reloadData()
-            }
-        })
-    }
+            case let .success(groups):
+                
+                do {
+                    let newGroup = groups
+                    self.tableView.reloadData()
+                    try self.realm?.write({
+                        self.realm?.add(newGroup, update: Realm.UpdatePolicy.all)
+                        print(self.realm?.configuration.fileURL ?? "")
+                    })
+                } catch {
+                    print(error)
+                }
+        }
+    })
+        
+        guard let realm = realm else { return }
+         
 
-    // MARK: - Table view data source
+        
+        let groupObjects = realm.objects(MyGroups.self)
+        
+//        try? realm.write({
+//            self.realm?.deleteAll()
+//        })
+        
+        notificationToken = groupObjects.observe { change in
+        
+            switch change {
+        
+        case .initial(_):
+                self.group = groupObjects.filter({ _ in true })   // пробрасываем все данные, которые пришли
+                self.tableView.reloadData()
+        
+        case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                self.tableView.beginUpdates()
+                
+                self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                
+                self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+            
+                self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+           
+            self.group = groupObjects.filter({ _ in true })
+            self.tableView.endUpdates()
+            
+        case let .error(error):
+                print(error)
+            }
+        }
+        self.group = groupObjects.filter({ _ in true })
+       
+        
+}
+
     
-    
-    //    @IBAction func addGroup(segue: UIStoryboardSegue) {
-    //
-    //        if let groupViewController = segue.source as? ScreenAreNotMyGroupsViewController,
-    //           let selectedIndexPath = groupViewController.tableView.indexPathForSelectedRow {
-    //            let selectedGroup = groupViewController.groups[selectedIndexPath.row]
-    //
-    //            if !myGroups.contains(selectedGroup) {
-    //                myGroups.append(selectedGroup)
-    //                tableView.reloadData()
-    //            }
-    //        }
-//    }
-//
-//
-//
-//
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -106,7 +124,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
     }
 }
     
-    
+
 //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 //        if editingStyle == .delete {
 //            // Delete the row from the data source
