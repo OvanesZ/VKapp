@@ -7,19 +7,19 @@
 
 import UIKit
 import Alamofire
+import Realm
 import RealmSwift
 
 class MainViewController: UIViewController{
     
 
-    
-    
-    var friends: [Friends] = []
-    
-    private lazy var friend: Results<Friends>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(Friends.self)
+    var notificationToken: NotificationToken?
+ //   private lazy var friend: Results<Friends>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(Friends.self)
     
     private let networkSession = NetworkService()
-    
+    private var friend: [Friends]?
+    private let realm = try? Realm()
+
     
     
     @IBOutlet var tableView: UITableView!
@@ -31,22 +31,78 @@ class MainViewController: UIViewController{
         
         let userToken = Session.shared.token
        
-        
         networkSession.loadFriendsID(token: userToken, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)
-            case let .success(friend):
-                try? RealmService.save(items: friend, update: .modified)
+            case let .success(friends):
                 
-             
-                
-                self.tableView.reloadData()
+                do {
+                    
+                    let newFriend = friends
+                    
+                    self.tableView.reloadData()
+                    try self.realm?.write({
+                        self.realm?.add(newFriend)
+                    })
+                } catch {
+                    print(error)
+                }
             }
+        
+//      networkSession.loadFriendsID(token: userToken, completion: { result in
+//            switch result {
+//            case let .failure(error):
+//                print(error)
+//            case let .success(friend):
+//                try? RealmService.save(items: friend, update: .modified)
+//
+//
+//                self.tableView.reloadData()
+//            }
+//        })
+    })
+       
+        
+        
+        
+        guard let realm = realm else { return }
+         
+
+        
+        let friendObjects = realm.objects(Friends.self)
+        
+        try? realm.write({
+            self.realm?.deleteAll()
         })
         
-    }
-    
+        notificationToken = friendObjects.observe { change in
+        
+            switch change {
+        
+        case .initial(_):
+                self.friend = friendObjects.filter({ _ in true })   // пробрасываем все данные, которые пришли
+                self.tableView.reloadData()
+        
+        case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                self.tableView.beginUpdates()
+                
+                self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                
+                self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+            
+                self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+           
+            self.friend = friendObjects.filter({ _ in true })
+            self.tableView.endUpdates()
+            
+        case let .error(error):
+                print(error)
+            }
+        }
+        self.friend = friendObjects.filter({ _ in true })
+       
+        }
     
     
     

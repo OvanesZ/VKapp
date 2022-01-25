@@ -21,6 +21,7 @@ class RealmService {
         print(configuration.fileURL ?? "")
         try realm.write {
             realm.add(items, update: update)
+            
         }
     }
     
@@ -35,3 +36,10 @@ class RealmService {
         }
     }
 }
+
+
+
+
+
+
+
