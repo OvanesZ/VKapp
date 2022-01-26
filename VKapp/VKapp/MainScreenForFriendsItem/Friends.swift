@@ -53,7 +53,7 @@ class Friends: Object {
     @objc dynamic var friendImage: URL? { URL(string: "\(friendImageUrlText)") }
     var photosArray: [UIImage?] = []
     @objc dynamic var friendID = ""
-    
+    let photosFriendAlbum = List<Photo>()
     
     override static func primaryKey() -> String? {
         return "friendID"

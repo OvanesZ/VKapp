@@ -30,19 +30,23 @@ import RealmSwift
                         "width": 97
                     },
 */
+class Photo: Object {
 
-
-
-
-class Photo {
-
-    private let url: String
-    var iconUrl: URL? { URL(string: "\(url)")}
+    @objc dynamic var url = ""
+    @objc dynamic var iconUrl: URL? { URL(string: "\(url)")}
+    @objc dynamic var id = ""
+  
+    override class func primaryKey() -> String? {
+        return "id"
+    }
+  
     
-    init(json: JSON) {
+    convenience init(json: SwiftyJSON.JSON) {
+        self.init()
 
         let firstJson = json["sizes"].arrayValue.first
         self.url = firstJson?["url"].stringValue ?? ""
+        self.id = firstJson?["id"].stringValue ?? ""
     }
 }
 

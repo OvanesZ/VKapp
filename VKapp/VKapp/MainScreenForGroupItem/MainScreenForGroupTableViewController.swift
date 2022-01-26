@@ -15,10 +15,9 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
     var notificationToken: NotificationToken?
     private var myGroups: [MyGroups]?
-    private var group: [MyGroups]?
     private let networkSession = NetworkService()
     private let realm = try? Realm()
-    
+    var group: Results<MyGroups>?
     
     
     override func viewDidLoad() {
@@ -46,7 +45,6 @@ class MainScreenForGroupTableViewController: UITableViewController {
                 
                 do {
                     let newGroup = groups
-                    self.tableView.reloadData()
                     try self.realm?.write({
                         self.realm?.add(newGroup, update: Realm.UpdatePolicy.all)
                         print(self.realm?.configuration.fileURL ?? "")
@@ -58,44 +56,38 @@ class MainScreenForGroupTableViewController: UITableViewController {
     })
         
         guard let realm = realm else { return }
-         
-
+        group = realm.objects(MyGroups.self)
         
-        let groupObjects = realm.objects(MyGroups.self)
-        
-//        try? realm.write({
-//            self.realm?.deleteAll()
-//        })
-        
-        notificationToken = groupObjects.observe { change in
-        
+        notificationToken = group?.observe { change in
+            guard let tableView = self.tableView else { return }
+            
             switch change {
         
         case .initial(_):
-                self.group = groupObjects.filter({ _ in true })   // пробрасываем все данные, которые пришли
-                self.tableView.reloadData()
+            tableView.reloadData()
         
         case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-                self.tableView.beginUpdates()
+                tableView.beginUpdates()
                 
-                self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
                 
-                self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
             
-                self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
            
-            self.group = groupObjects.filter({ _ in true })
             self.tableView.endUpdates()
             
         case let .error(error):
                 print(error)
             }
         }
-        self.group = groupObjects.filter({ _ in true })
-       
-        
-}
+        tableView.reloadData()
+    }
 
+    
+    
+    
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

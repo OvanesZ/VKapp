@@ -6,17 +6,20 @@
 //
 
 import UIKit
+import Alamofire
+import Realm
+import RealmSwift
 
-//private let reuseIdentifier = "Cell"
+
 
 class FriendsViewController: UICollectionViewController {
     
-    
+    var notificationToken: NotificationToken?
     var displayedFriend: Friends?
-    var photoFriend: [Photo] = []
+    private var photoFriend: [Photo] = []
     
     private let networkSession = NetworkService()
-    
+    private let realm = try? Realm()
     
     
     
@@ -24,8 +27,17 @@ class FriendsViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let userToken = Session.shared.token
+        title = "\(displayedFriend!.firstName) \(displayedFriend!.lastName)"
+    }
+
+
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        let userToken = Session.shared.token
         let ownerID = displayedFriend!.friendID
   
         
@@ -34,17 +46,52 @@ class FriendsViewController: UICollectionViewController {
             case let .failure(error):
                 print(error)
             case let .success(photo):
-                let photoFriendNew: [Photo] = photo
-                self.photoFriend = photoFriendNew
                 
+            do {
+                let photoFriendNew = photo
                 
                 self.collectionView.reloadData()
+                try self.realm?.write({
+                    self.realm?.add(photoFriendNew, update: Realm.UpdatePolicy.all)
+                print(self.realm?.configuration.fileURL ?? "")
+                })
+            } catch {
+                print(error)
             }
-        })
-        title = "\(displayedFriend!.firstName) \(displayedFriend!.lastName)"
+        }
+    })
+        
+        guard let realm = realm else { return }
+        
+        let photoObject = realm.objects(Photo.self)
+        
+        notificationToken = photoObject.observe { (changes: RealmCollectionChange) in
+            switch changes {
+            
+            case .initial:
+                self.photoFriend = photoObject.filter({ _ in true })   // пробрасываем все данные, которые пришли
+                self.collectionView.reloadData()
+            
+          
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+                
+                self.collectionView.performBatchUpdates({self.collectionView.insertItems(at: insertions.map({IndexPath(row: $0, section: 0) }))
+                    
+                self.collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0)}))
+                    
+                self.collectionView.reloadItems(at: modifications.map({IndexPath(row: $0, section: 0)}))
+                }, completion: nil)
+                
+            case .error(let error):
+                fatalError("\(error)")
+            }
+        }
     }
-
-
+    
+    
+    
+    
+    
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -55,7 +102,7 @@ class FriendsViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
        // return displayedFriend?.photosArray.count ?? 0
-        return photoFriend.count
+        return photoFriend.count 
 
     }
 
@@ -64,7 +111,7 @@ class FriendsViewController: UICollectionViewController {
         
         
         
-       cell.configure(with: photoFriend[indexPath.item])
+        cell.configure(with: photoFriend[indexPath.item])
         
            
     

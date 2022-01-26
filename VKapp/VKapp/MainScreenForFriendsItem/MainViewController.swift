@@ -14,12 +14,10 @@ class MainViewController: UIViewController{
     
 
     var notificationToken: NotificationToken?
- //   private lazy var friend: Results<Friends>? = try? Realm(configuration: RealmService.deleteIfMigration).objects(Friends.self)
-    
     private let networkSession = NetworkService()
-    private var friend: [Friends]?
+   // private var friend: [Friends]?
     private let realm = try? Realm()
-
+    var friend: Results<Friends>?
     
     
     @IBOutlet var tableView: UITableView!
@@ -38,10 +36,7 @@ class MainViewController: UIViewController{
             case let .success(friends):
                 
                 do {
-                    
                     let newFriend = friends
-                    
-                    self.tableView.reloadData()
                     try self.realm?.write({
                         self.realm?.add(newFriend, update: Realm.UpdatePolicy.all)
                         print(self.realm?.configuration.fileURL ?? "")
@@ -59,38 +54,37 @@ class MainViewController: UIViewController{
          
 
         
-        let friendObjects = realm.objects(Friends.self)
+    //    let friendObjects = realm.objects(Friends.self)
+        friend = realm.objects(Friends.self)
+
         
-//        try? realm.write({
-//            self.realm?.deleteAll()
-//        })
-        
-        notificationToken = friendObjects.observe { change in
-        
+        notificationToken = friend?.observe { change in
+            guard let tableView = self.tableView else { return }
             switch change {
         
         case .initial(_):
-                self.friend = friendObjects.filter({ _ in true })   // пробрасываем все данные, которые пришли
-                self.tableView.reloadData()
+            tableView.reloadData()
+//                self.friend = friendObjects.filter({ _ in true })   // пробрасываем все данные, которые пришли
+//                self.tableView.reloadData()
         
         case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-                self.tableView.beginUpdates()
+                tableView.beginUpdates()
                 
-                self.tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
                 
-                self.tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
             
-                self.tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+                tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
            
-            self.friend = friendObjects.filter({ _ in true })
-            self.tableView.endUpdates()
+//            self.friend = friendObjects.filter({ _ in true })
+                tableView.endUpdates()
             
         case let .error(error):
                 print(error)
             }
         }
-        self.friend = friendObjects.filter({ _ in true })
-       
+//        self.friend = friendObjects.filter({ _ in true })
+        tableView.reloadData()
         }
     
     
@@ -163,3 +157,44 @@ extension MainViewController: UITableViewDataSource {
 }
 
 
+
+
+
+
+//
+//guard let realm = realm else { return }
+//
+//
+//
+////       let friendObjects = realm.objects(Friends.self)
+//friend = realm.objects(Friends.self)
+//
+//
+//notificationToken = friend?.observe { [weak self] change in
+//    guard let tableView = self?.tableView else { return }
+//    switch change {
+//
+//case .initial(_):
+//    tableView.reloadData()
+////                self.friend = friendObjects.filter({ _ in true })   // пробрасываем все данные, которые пришли
+////                self.tableView.reloadData()
+//
+//case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+//        tableView.beginUpdates()
+//
+//        tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+//
+//        tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+//
+//        tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
+//
+//  //  self.friend = friendObjects.filter({ _ in true })
+//        tableView.endUpdates()
+//
+//case let .error(error):
+//        print(error)
+//    }
+//}
+////      self.friend = friendObjects.filter({ _ in true })
+//tableView.reloadData()
+//}
