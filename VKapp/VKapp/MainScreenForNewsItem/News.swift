@@ -8,17 +8,36 @@
 import UIKit
 
 
-class News {
+class HedderNews {
     var name = ""
     var photo: UIImage?
-    var textNews = ""
     
     init(name: String, photo: UIImage?, textNews: String) {
         self.name = name
         self.photo = photo
-        self.textNews = textNews
     }
 }
+
+
+class ImageNews {
+    var photoNews: UIImage?
+    
+    init(photoNews: UIImage?) {
+    self.photoNews = photoNews
+    }
+}
+
+
+class TextNews {
+    var textNews = ""
+}
+
+
+class LikeAndCommentNews {
+    var likeValue: Int?
+    var commentText = ""
+}
+
 
 
 
