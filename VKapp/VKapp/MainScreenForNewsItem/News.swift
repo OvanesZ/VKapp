@@ -8,37 +8,30 @@
 import UIKit
 
 
-class HedderNews {
+
+
+
+//class News {
+//    var name = ""
+//    var photoUserOrGroup: UIImage?
+//    var textNews = ""
+//    var likeValue: Int
+//    var imageNews: UIImage?
+//
+//    init(name: String, photoUserOrGroup: UIImage?, textNews: String, likeValue: Int, imageNews: UIImage?) {
+//        self.name = name
+//        self.photoUserOrGroup = photoUserOrGroup
+//        self.textNews = textNews
+//        self.likeValue = likeValue
+//        self.imageNews = imageNews
+//    }
+//
+//}
+
+struct News {
     var name = ""
-    var photo: UIImage?
-    
-    init(name: String, photo: UIImage?, textNews: String) {
-        self.name = name
-        self.photo = photo
-    }
-}
-
-
-class ImageNews {
-    var photoNews: UIImage?
-    
-    init(photoNews: UIImage?) {
-    self.photoNews = photoNews
-    }
-}
-
-
-class TextNews {
+    var photoUserOrGroup: UIImage?
     var textNews = ""
+    var likeValue = ""
+    var imageNews: UIImage?
 }
-
-
-class LikeAndCommentNews {
-    var likeValue: Int?
-    var commentText = ""
-}
-
-
-
-
-

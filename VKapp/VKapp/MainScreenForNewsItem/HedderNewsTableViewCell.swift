@@ -17,16 +17,19 @@ class HedderNewsTableViewCell: UITableViewCell {
     
     @IBOutlet var hedderLabel: UILabel!
     
+
+    
+    @IBOutlet var hedderImage: UIImageView!
     
 //    override func setSelected(_ selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
     
     
     
-    func configure(with hedder: HedderNews) {
+    func configure(with hedder: News) {
         
         hedderLabel.text = String(describing: hedder.name)
-
+        hedderImage.image = hedder.photoUserOrGroup
         // Configure the view for the selected state
     }
 

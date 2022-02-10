@@ -9,15 +9,17 @@ import UIKit
 
 class LikeNewsTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    
+    @IBOutlet var likeItemsLabel: UILabel!
+    
+    
+    func configure(with like: News) {
+        
+        likeItemsLabel.text = String(describing: like.likeValue)
+    
+    
     }
 
 }

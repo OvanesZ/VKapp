@@ -9,15 +9,21 @@ import UIKit
 
 class TextNewsTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+ 
+    
+    
+    
+    
+  
+    @IBOutlet var textNewsLabel: UILabel!
+    
+    
+    func configure(with text: News) {
+        
+        textNewsLabel.text = String(describing: text.textNews)
+    
+    
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+   
 
 }
