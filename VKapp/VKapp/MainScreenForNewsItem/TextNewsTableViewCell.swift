@@ -18,9 +18,9 @@ class TextNewsTableViewCell: UITableViewCell {
     @IBOutlet var textNewsLabel: UILabel!
     
     
-    func configure(with text: News) {
+    func configure(with text: Newsfeed) {
         
-        textNewsLabel.text = String(describing: text.textNews)
+        textNewsLabel.text = String(describing: text.text)
     
     
     }

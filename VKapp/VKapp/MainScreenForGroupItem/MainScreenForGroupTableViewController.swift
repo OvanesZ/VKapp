@@ -18,7 +18,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
     private let networkSession = NetworkService()
     private let realm = try? Realm()
     var group: Results<MyGroups>?
-    
+    var newsfeeds = [Newsfeed]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,13 @@ class MainScreenForGroupTableViewController: UITableViewController {
         let userToken = Session.shared.token
         
 
+ 
+
+        
+        
+        
+        
+        
         networkSession.loadGroup(token: userToken, completion: { result in
             switch result {
             case let .failure(error):
@@ -55,28 +62,29 @@ class MainScreenForGroupTableViewController: UITableViewController {
         }
     })
         
+        
         guard let realm = realm else { return }
         group = realm.objects(MyGroups.self)
-        
+
         notificationToken = group?.observe { change in
             guard let tableView = self.tableView else { return }
-            
+
             switch change {
-        
+
         case .initial(_):
             tableView.reloadData()
-        
+
         case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
                 tableView.beginUpdates()
-                
+
                 tableView.insertRows(at: insertions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
-                
+
                 tableView.deleteRows(at: deletions.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
-            
+
                 tableView.reloadRows(at: modifications.map({ IndexPath(row: $0, section: 0)}), with: .automatic)
-           
+
             self.tableView.endUpdates()
-            
+
         case let .error(error):
                 print(error)
             }

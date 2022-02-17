@@ -23,8 +23,8 @@ class ImageNewsTableViewCell: UITableViewCell {
     @IBOutlet var imageNews: UIImageView!
     
     
-    func configure(with image: News) {
-        imageNews.image = image.imageNews
+    func configure(with image: Newsfeed) {
+      //  imageNews.image = image.imageNews
     }
         // Configure the view for the selected state
     }

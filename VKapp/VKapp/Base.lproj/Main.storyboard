@@ -679,8 +679,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="41"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-zJ-M5D">
-                                            <rect key="frame" x="20" y="10" width="374" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGc-zJ-M5D">
+                                            <rect key="frame" x="20" y="10.5" width="374" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -689,7 +689,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="mGc-zJ-M5D" secondAttribute="trailing" constant="20" id="C7f-0X-eC2"/>
                                         <constraint firstAttribute="bottom" secondItem="mGc-zJ-M5D" secondAttribute="bottom" constant="10" id="J03-5M-pgS"/>
-                                        <constraint firstItem="mGc-zJ-M5D" firstAttribute="top" secondItem="tjM-KP-dWV" secondAttribute="top" constant="10" id="V9G-C0-aV2"/>
+                                        <constraint firstItem="mGc-zJ-M5D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tjM-KP-dWV" secondAttribute="top" constant="10" id="V9G-C0-aV2"/>
                                         <constraint firstItem="mGc-zJ-M5D" firstAttribute="leading" secondItem="tjM-KP-dWV" secondAttribute="leading" constant="20" id="gYu-kw-X4W"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -698,29 +698,12 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LikeCell" id="ujH-qj-GhU" customClass="LikeNewsTableViewCell" customModule="VKapp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="171" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="171" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ujH-qj-GhU" id="Eyu-73-qhR">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YyP-fd-h4a">
-                                            <rect key="frame" x="20" y="11" width="180" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="YyP-fd-h4a" firstAttribute="leading" secondItem="Eyu-73-qhR" secondAttribute="leading" constant="20" id="Z41-yA-wLG"/>
-                                        <constraint firstAttribute="trailing" secondItem="YyP-fd-h4a" secondAttribute="trailing" constant="214" id="dgi-nS-lZW"/>
-                                        <constraint firstItem="YyP-fd-h4a" firstAttribute="top" secondItem="Eyu-73-qhR" secondAttribute="top" constant="11" id="nOd-7L-yV5"/>
-                                        <constraint firstAttribute="bottom" secondItem="YyP-fd-h4a" secondAttribute="bottom" constant="12" id="vLh-pj-AqH"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="likeItemsLabel" destination="YyP-fd-h4a" id="m2y-ek-JEp"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

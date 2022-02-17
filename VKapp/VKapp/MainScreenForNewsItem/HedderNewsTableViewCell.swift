@@ -26,10 +26,10 @@ class HedderNewsTableViewCell: UITableViewCell {
     
     
     
-    func configure(with hedder: News) {
+    func configure(with hedder: Newsfeed) {
         
-        hedderLabel.text = String(describing: hedder.name)
-        hedderImage.image = hedder.photoUserOrGroup
+//        hedderLabel.text = String(describing: hedder.text)
+     //   hedderImage.image = hedder.photoUserOrGroup
         // Configure the view for the selected state
     }
 
