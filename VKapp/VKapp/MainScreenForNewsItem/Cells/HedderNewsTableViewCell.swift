@@ -6,14 +6,11 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class HedderNewsTableViewCell: UITableViewCell {
 
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-    
     
     @IBOutlet var hedderLabel: UILabel!
     
@@ -21,15 +18,11 @@ class HedderNewsTableViewCell: UITableViewCell {
     
     @IBOutlet var hedderImage: UIImageView!
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-    
-    
-    
-    func configure(with hedder: Newsfeed) {
+    func configure(with hedder: News) {
         
 //        hedderLabel.text = String(describing: hedder.text)
-     //   hedderImage.image = hedder.photoUserOrGroup
+//        hedderImage.image = hedder.photosURL
+       // hedderImage.kf.setImage(with: hedder.avatarURL)
         // Configure the view for the selected state
     }
 

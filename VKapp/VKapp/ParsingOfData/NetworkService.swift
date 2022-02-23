@@ -169,15 +169,8 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
 
 
 // MARK: - get news
-
-
     
-   
-    
-    
-    
-    
-    func loadNewsfeed (token: String, completionHandler: @escaping (Result<[Newsfeed], Error>) -> Void) {
+    func loadNewsfeed (token: String, completionHandler: @escaping (Result<[NewsfeedItems], Error>) -> Void) {
         let baseUrl = "https://api.vk.com"
         let path = "/method/newsfeed.get"
         let params: Parameters = [
@@ -192,18 +185,173 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
                 switch response.result {
                 case let .success(data):
                     do {
-                        let newsfeeldResponse = try JSONDecoder().decode(NewsfeedResponse.self, from: data)
-                        let newsfeeld = newsfeeldResponse.response.items
-                        completionHandler(.success(newsfeeld))
+                       let newsfeedItems = try JSONDecoder().decode(NewsfeedResponse.self, from: data)
+                        let newsfeed = newsfeedItems.response.items
+                        completionHandler(.success(newsfeed))
                     } catch {
                         completionHandler(.failure(error))
                     }
                 case let .failure(error):
                     completionHandler(.failure(error))
-        
+                }
         }
     }
+    
+    
+    
+    
+    func loadNewsfeedItemsWithProfile (token: String, completionHandler: @escaping (Result<[NewsfeedItems], AppError>) -> Void) {
+        let baseUrl = "https://api.vk.com"
+        let path = "/method/newsfeed.get"
+        let params: Parameters = [
+            "access_token": token,
+            "filters": "post",
+            "v": "5.131",
+            "source_ids": "friends",
+            "count": 10
+        ]
+        AF.request(baseUrl + path, method: .get, parameters: params).responseData { response in
+          
+              
+        }
+    }
+    
+    
+    
+    
+    
+    
+    private var urlConstructor = URLComponents()
+    
+    func loadNews (completion: @escaping ([NewsfeedItems]) -> Void, onError: @escaping (Error) -> Void) {
+//        let baseUrl = "https://api.vk.com"
+//        let path = "/method/newsfeed.get"
+//        let params: Parameters = [
+//            "access_token": token,
+//            "filters": "post",
+//            "v": "5.131",
+//            "source_ids": "friends",
+//            "count": 10
+//        ]
+        
+        urlConstructor.scheme = "https"
+        urlConstructor.host = "api.vk.com"
+        urlConstructor.path = "/method/newsfeed.get"
+        urlConstructor.queryItems = [
+            URLQueryItem(name: "filters", value: "post"),
+            URLQueryItem(name: "start_from", value: "next_from"),
+            URLQueryItem(name: "count", value: "10"),
+            URLQueryItem(name: "access_token", value: Session.shared.token),
+            URLQueryItem(name: "v", value: "5.131"),
+        ]
+        
+        
+//        let url = URL(string: (baseUrl + path))
+        let session = URLSession.shared
+        let task = session.dataTask(with: urlConstructor.url!) { (data, response, error) in
+           
+            if error != nil {
+                onError(AppError.errorTask)
+            }
+            
+            guard let data = data else {
+                onError(AppError.noDataProvided)
+                return
+            }
+            
+            guard var news = try? JSONDecoder().decode(NewsfeedResponse.self, from: data).response.items else {
+                onError(AppError.failedToDecode)
+                return
+            }
+            guard let profiles = try? JSONDecoder().decode(NewsfeedResponse.self, from: data).response.profiles else {
+                onError(AppError.failedToDecode)
+                print("Error profiles")
+                return
+            }
+            
+            for i in 0..<news.count {
+                let profile = profiles.first(where: { $0.id == news[i].sourceID })
+            news[i].avatarURL = profile?.avatarURL
+            news[i].creatorName = (profile?.firstName ?? "") + (profile?.lastName ?? "")
+            }
+            
+//            DispatchQueue.main.async {
+//                completion(news)
+//            }
+            completion(news)
+        }
+        task.resume()
+    }
+    
+    
+    
+    
+    
+    func loadNews(token: String, completionHandler: @escaping ((Result<[News], Error>) -> Void)) {
+        let baseUrl = "https://api.vk.com"
+        let path = "/method/newsfeed.get"
+        let params: Parameters = [
+            "access_token": token,
+            "filters": "post",
+            "v": "5.131",
+            "source_ids": "friends",
+            "count": 10
+        ]
+    
+        AF.request(baseUrl + path, method: .get, parameters: params).responseJSON { response in
+            switch response.result {
+            case let .failure(error):
+                completionHandler(.failure(error))
+            case let .success(json):
+                let newsJson = JSON(json)["response"]["items"].arrayValue
+                let news = newsJson.map(News.init)
+                completionHandler(.success(news))
+                print("load news \(news)")
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+    
+    
+    
+    
 
 
-}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,7 +15,7 @@ class LikeNewsTableViewCell: UITableViewCell {
     @IBOutlet var likeItemsLabel: UILabel!
     
     
-    func configure(with like: Newsfeed) {
+    func configure(with like: News) {
         
    //     likeItemsLabel.text = String(describing: like.likeValue)
     

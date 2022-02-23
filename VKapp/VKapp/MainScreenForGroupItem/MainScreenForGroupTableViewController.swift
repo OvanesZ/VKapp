@@ -18,7 +18,7 @@ class MainScreenForGroupTableViewController: UITableViewController {
     private let networkSession = NetworkService()
     private let realm = try? Realm()
     var group: Results<MyGroups>?
-    var newsfeeds = [Newsfeed]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
