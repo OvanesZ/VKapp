@@ -6,32 +6,74 @@
 //
 
 import UIKit
+import SwiftyJSON
+import SwiftUI
+import RealmSwift
 
 
 
 
 
-//class News {
-//    var name = ""
-//    var photoUserOrGroup: UIImage?
-//    var textNews = ""
-//    var likeValue: Int
-//    var imageNews: UIImage?
-//
-//    init(name: String, photoUserOrGroup: UIImage?, textNews: String, likeValue: Int, imageNews: UIImage?) {
-//        self.name = name
-//        self.photoUserOrGroup = photoUserOrGroup
-//        self.textNews = textNews
-//        self.likeValue = likeValue
-//        self.imageNews = imageNews
-//    }
-//
-//}
 
-struct News {
-    var name = ""
-    var photoUserOrGroup: UIImage?
-    var textNews = ""
-    var likeValue = ""
-    var imageNews: UIImage?
+
+
+
+
+
+struct NewsfeedResponse: Decodable {
+    let response: NewsfeedContainer
 }
+
+struct NewsfeedContainer: Decodable {
+    let items: [Newsfeed]
+}
+
+
+class Newsfeed: Decodable {
+   
+    var text = ""
+    var commentCount: Int = 0
+    var likesCount: Int = 0
+    var commentCountPost: Int = 0
+    var likesCountPost: Int = 0
+    
+   
+    enum CodingKeys: String, CodingKey {
+        case text
+        case attachments
+        case comments
+        case likes
+    }
+    
+    
+    enum CommentKeys: String, CodingKey {
+        case count
+        case commentCountPost = "can_post"
+    }
+    
+    enum LikesKeys: String, CodingKey {
+        case count
+        case likesCountPost = "can_like"
+    }
+    
+    convenience required init(from decoder: Decoder) throws {
+        self.init()
+  
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.text = try values.decode(String.self, forKey: .text)
+
+        let commentValues = try values.nestedContainer(keyedBy: CommentKeys.self, forKey: .comments)
+        self.commentCount = try commentValues.decode(Int.self, forKey: .count)
+        self.commentCountPost = try commentValues.decode(Int.self, forKey: .commentCountPost)
+
+        let likesValue = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
+        self.likesCount = try likesValue.decode(Int.self, forKey: .count)
+        self.likesCountPost = try likesValue.decode(Int.self, forKey: .likesCountPost)
+    }
+    
+    public static let shared = Newsfeed()
+}
+
+
+

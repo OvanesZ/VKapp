@@ -39,6 +39,7 @@
 		4E7A24C325E6CC7600E882A3 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C225E6CC7600E882A3 /* Friends.swift */; };
 		4E7A24C625E8076000E882A3 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C525E8076000E882A3 /* FriendsViewController.swift */; };
 		4E7A24CD25E81CC900E882A3 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24CC25E81CC900E882A3 /* GroupCell.swift */; };
+		4EDBAA6627BC26C3004A1858 /* Newsfeeld.get_request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBAA6527BC26C3004A1858 /* Newsfeeld.get_request.swift */; };
 		4EE1E3902607503A00D2BDA1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1E38F2607503900D2BDA1 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		4E7A24C225E6CC7600E882A3 /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		4E7A24C525E8076000E882A3 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		4E7A24CC25E81CC900E882A3 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		4EDBAA6527BC26C3004A1858 /* Newsfeeld.get_request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Newsfeeld.get_request.swift; sourceTree = "<group>"; };
 		4EE1E38F2607503900D2BDA1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79873B7F1F8C258688E57FDF /* Pods-VKapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.release.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.release.xcconfig"; sourceTree = "<group>"; };
 		82719AE800776E69E73E1FE2 /* Pods-VKapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.debug.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			children = (
 				4EE1E38F2607503900D2BDA1 /* User.swift */,
 				4E6AF315261C82A30078A3DE /* NetworkService.swift */,
+				4EDBAA6527BC26C3004A1858 /* Newsfeeld.get_request.swift */,
 				4E22029226775CB100029028 /* RealmService.swift */,
 			);
 			path = ParsingOfData;
@@ -363,6 +366,7 @@
 				4EE1E3902607503A00D2BDA1 /* User.swift in Sources */,
 				4E7A24B825E583F300E882A3 /* MainViewController.swift in Sources */,
 				4E59816E25F145F8000C1151 /* FriendsViewCell.swift in Sources */,
+				4EDBAA6627BC26C3004A1858 /* Newsfeeld.get_request.swift in Sources */,
 				4E202B7C27B54C9A00EEF3D5 /* LikeNewsTableViewCell.swift in Sources */,
 				4E652C8725FC18030049A9E1 /* GradientView.swift in Sources */,
 				4E652C8425FAA31E0049A9E1 /* MainImageView.swift in Sources */,

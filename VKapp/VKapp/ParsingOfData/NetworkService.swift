@@ -164,4 +164,46 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
         }
     }
 }
+
+
+
+
+// MARK: - get news
+
+
+    
+   
+    
+    
+    
+    
+    func loadNewsfeed (token: String, completionHandler: @escaping (Result<[Newsfeed], Error>) -> Void) {
+        let baseUrl = "https://api.vk.com"
+        let path = "/method/newsfeed.get"
+        let params: Parameters = [
+            "access_token": token,
+            "filters": "post",
+            "v": "5.131",
+            "source_ids": "friends",
+            "count": 10
+        ]
+        AF.request(baseUrl + path, method: .get, parameters: params).responseData { response in
+          
+                switch response.result {
+                case let .success(data):
+                    do {
+                        let newsfeeldResponse = try JSONDecoder().decode(NewsfeedResponse.self, from: data)
+                        let newsfeeld = newsfeeldResponse.response.items
+                        completionHandler(.success(newsfeeld))
+                    } catch {
+                        completionHandler(.failure(error))
+                    }
+                case let .failure(error):
+                    completionHandler(.failure(error))
+        
+        }
+    }
+}
+
+
 }

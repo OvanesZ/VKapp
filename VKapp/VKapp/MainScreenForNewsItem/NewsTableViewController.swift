@@ -6,33 +6,62 @@
 //
 
 import UIKit
+import Alamofire
 
 class NewsTableViewController: UITableViewController {
 
-    
-    fileprivate let newsArray: [News?] = [News(name: "New Yourk Times", photoUserOrGroup: UIImage(named: "ivi"), textNews: "Some text", likeValue: "like 0", imageNews: UIImage(named: "ivi")),
-                                         News (name: "Auto", photoUserOrGroup: UIImage(named: "netflix"), textNews: "TEST", likeValue: "like 5", imageNews: UIImage(named: "netflix")),
-                                          News(name: "National Geographic", photoUserOrGroup: UIImage(named: "1"), textNews: "Animal", likeValue: "like 3", imageNews: UIImage(named: "5"))
-    ]
+    private let networkSession = NetworkService()
+    let userToken = Session.shared.token
+    private var newsfeed: [Newsfeed?] = []
     
     
+  
     
+    
+    
+    
+  
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+                networkSession.loadNewsfeed(token: userToken, completionHandler: { result in
+                    switch result {
+                    case let .failure(error):
+                        print(error)
+                    case let .success(newsfeed):
+                        self.newsfeed = newsfeed
+                        self.tableView.reloadData()
+                        }
+                    })
+    
+//        for _ in 0...newsfeed.count {
+//            if Newsfeed.shared.text == "" {
+//                self.tableView.estimatedRowHeight = 0
+//        } else {
+//            self.tableView.estimatedRowHeight = 44.0
+//        }
+//                }
+       
+        self.tableView.estimatedRowHeight = 44.0
+        
+        
+}
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return newsArray.count
+        return newsfeed.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,31 +76,32 @@ class NewsTableViewController: UITableViewController {
         switch indexPath.item {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HedderCell", for: indexPath) as! HedderNewsTableViewCell
-            guard let hedder = newsArray[indexPath.section] else { return UITableViewCell() }
+            guard let hedder = newsfeed[indexPath.section] else { return UITableViewCell() }
             cell.configure(with: hedder)
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageNewsTableViewCell
-            guard let image = newsArray[indexPath.section] else { return UITableViewCell() }
+            guard let image = newsfeed[indexPath.section] else { return UITableViewCell() }
             cell.configure(with: image)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextNewsTableViewCell
-            guard let text = newsArray[indexPath.section] else { return UITableViewCell() }
+            guard let text = newsfeed[indexPath.section] else { return UITableViewCell() }
             cell.configure(with: text)
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LikeCell", for: indexPath) as! LikeNewsTableViewCell
-            guard let like = newsArray[indexPath.section] else { return UITableViewCell() }
+            guard let like = newsfeed[indexPath.section] else { return UITableViewCell() }
             cell.configure(with: like)
             return cell
         default:
             return UITableViewCell()
         }
-        
-    
     }
     
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//        }
 
     /*
     // Override to support conditional editing of the table view.
