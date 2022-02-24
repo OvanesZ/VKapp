@@ -40,6 +40,7 @@
 		4E7A24C625E8076000E882A3 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24C525E8076000E882A3 /* FriendsViewController.swift */; };
 		4E7A24CD25E81CC900E882A3 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7A24CC25E81CC900E882A3 /* GroupCell.swift */; };
 		4EDBAA6627BC26C3004A1858 /* Newsfeeld.get_request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDBAA6527BC26C3004A1858 /* Newsfeeld.get_request.swift */; };
+		4EDCE22C27C6C3E100770528 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4EDCE22B27C6C3E100770528 /* SnapKit */; };
 		4EE1E3902607503A00D2BDA1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE1E38F2607503900D2BDA1 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,7 @@
 				4E1BC6AA265D854300954477 /* Kingfisher in Frameworks */,
 				4E613CC32610DD7B005EBB43 /* Alamofire in Frameworks */,
 				11503918687D8E2C43E6E18E /* Pods_VKapp.framework in Frameworks */,
+				4EDCE22C27C6C3E100770528 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +265,7 @@
 				4E613CC22610DD7B005EBB43 /* Alamofire */,
 				4E1BC6A9265D854300954477 /* Kingfisher */,
 				4E221C892664B93700CBBC8F /* RealmSwift */,
+				4EDCE22B27C6C3E100770528 /* SnapKit */,
 			);
 			productName = VKapp;
 			productReference = 4E03552C25D9680B00F45590 /* VKapp.app */;
@@ -295,6 +298,7 @@
 				4E613CC12610DD7B005EBB43 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4E1BC6A8265D854300954477 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				4E221C882664B93700CBBC8F /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				4EDCE22A27C6C3E100770528 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4E03552D25D9680B00F45590 /* Products */;
 			projectDirPath = "";
@@ -621,6 +625,14 @@
 				minimumVersion = 5.4.1;
 			};
 		};
+		4EDCE22A27C6C3E100770528 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -638,6 +650,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E613CC12610DD7B005EBB43 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		4EDCE22B27C6C3E100770528 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4EDCE22A27C6C3E100770528 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

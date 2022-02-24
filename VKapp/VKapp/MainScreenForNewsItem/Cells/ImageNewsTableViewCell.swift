@@ -7,26 +7,27 @@
 
 import UIKit
 
-class ImageNewsTableViewCell: UITableViewCell {
+class ImageNewsTableViewCell: UITableViewCell, AnyNewsCell {
 
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
+    private let newsImageView = UIImageView()
     
-   
-    
-    @IBOutlet var imageNews: UIImageView!
-    
-    
-    func configure(with image: News) {
-        imageNews.kf.setImage(with: image.url)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(newsImageView)
+        newsImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.height.equalTo(200)
+        }
     }
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configure(with news: News) {
+        newsImageView.kf.setImage(with: news.url)
+    }
 }
 
 

@@ -135,7 +135,7 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
 
 //private let owner = friendsID
     
-    func loadPhoto(token: String, owner: String, completion: @escaping (Result<[Photo], Error>) -> Void) {
+    func loadPhoto(token: String, owner: Int, completion: @escaping (Result<[Photo], Error>) -> Void) {
     let baseUrl = "https://api.vk.com"
     let path = "/method/photos.get"
     let params: Parameters = [
@@ -303,10 +303,47 @@ func loadGroup(token: String, completion: @escaping (Result<[MyGroups], Error>) 
             case let .failure(error):
                 completionHandler(.failure(error))
             case let .success(json):
-                let newsJson = JSON(json)["response"]["items"].arrayValue
-                let news = newsJson.map(News.init)
-                completionHandler(.success(news))
-                print("load news \(news)")
+                
+                let dispatchGroup = DispatchGroup()
+                
+                var news: [News] = []
+                var profiles: [Friends] = []
+                var groupsJson: [JSON] = []
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    let newsJson = JSON(json)["response"]["items"].arrayValue
+                    
+                    news = newsJson.map(News.init)
+                }
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    let profilesJson = JSON(json)["response"]["profiles"].arrayValue
+                    profiles = profilesJson.map { Friends(json: $0) }
+                }
+                
+                DispatchQueue.global().async(group: dispatchGroup) {
+                    groupsJson = JSON(json)["response"]["groups"].arrayValue
+                }
+                
+               
+                dispatchGroup.notify(queue: DispatchQueue.global()) {
+                    let newsWithoutSources = news.compactMap { news -> News? in
+                        if news.sourceId > 0 {
+                            var newsCopy = news
+                            guard let newsSource = profiles.first(where: { $0.friendID == news.sourceId }) else { return nil }
+                            newsCopy.source = newsSource
+                            return newsCopy
+                        } else {
+                            print("TODO add group parsing")
+                            return nil
+                        }
+                    }
+                    
+                    
+                    DispatchQueue.main.async {
+                        completionHandler(.success(newsWithoutSources))
+                    }
+                }   
             }
         }
     }

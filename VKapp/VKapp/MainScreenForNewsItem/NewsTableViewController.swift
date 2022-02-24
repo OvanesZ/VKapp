@@ -8,20 +8,20 @@
 import UIKit
 import Alamofire
 
+protocol AnyNewsCell {
+    
+}
+
+
+
 class NewsTableViewController: UITableViewController {
 
     private let networkSession = NetworkService()
     let userToken = Session.shared.token
-    private var newsfeed: [News?] = []
+    private(set) var newsfeed: [News] = []
     
     
   
-    
-    
-    
-    
-  
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,16 +38,17 @@ class NewsTableViewController: UITableViewController {
     
         
         self.tableView.estimatedRowHeight = 44.0
-        
-       
-      
-        
-        
 }
         
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(HedderNewsTableViewCell.self, forCellReuseIdentifier: "HedderNewsTableViewCell")
+        tableView.register(ImageNewsTableViewCell.self, forCellReuseIdentifier: "ImageNewsTableViewCell")
+        tableView.register(TextNewsTableViewCell.self, forCellReuseIdentifier: "TextNewsTableViewCell")
+        tableView.register(LikeNewsTableViewCell.self, forCellReuseIdentifier: "LikeNewsTableViewCell")
+        
     }
     
     
@@ -71,24 +72,44 @@ class NewsTableViewController: UITableViewController {
         
         switch indexPath.item {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HedderCell", for: indexPath) as! HedderNewsTableViewCell
-            guard let hedder = newsfeed[indexPath.section] else { return UITableViewCell() }
-            cell.configure(with: hedder)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "HedderCell", for: indexPath) as! HedderNewsTableViewCell
+//            guard let hedder = newsfeed[indexPath.section] else { return UITableViewCell() }
+//            cell.configure(with: hedder)
+//            return cell
+            let cellIdentifier = "HedderNewsTableViewCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HedderNewsTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(with: newsfeed[indexPath.section])
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageNewsTableViewCell
-            guard let image = newsfeed[indexPath.section] else { return UITableViewCell() }
-            cell.configure(with: image)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageCell", for: indexPath) as! ImageNewsTableViewCell
+//            guard let image = newsfeed[indexPath.section] else { return UITableViewCell() }
+//            cell.configure(with: image)
+//            return cell
+            let cellIdentifier = "ImageNewsTableViewCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ImageNewsTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(with: newsfeed[indexPath.section])
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextNewsTableViewCell
-            guard let text = newsfeed[indexPath.section] else { return UITableViewCell() }
-            cell.configure(with: text)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextNewsTableViewCell
+//            guard let text = newsfeed[indexPath.section] else { return UITableViewCell() }
+//            cell.configure(with: text)
+//            return cell
+            let cellIdentifier = "TextNewsTableViewCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TextNewsTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(with: newsfeed[indexPath.section])
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LikeCell", for: indexPath) as! LikeNewsTableViewCell
-            guard let like = newsfeed[indexPath.section] else { return UITableViewCell() }
-            cell.configure(with: like)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "LikeCell", for: indexPath) as! LikeNewsTableViewCell
+//            guard let like = newsfeed[indexPath.section] else { return UITableViewCell() }
+//            cell.configure(with: like)
+//            return cell
+            let cellIdentifier = "LikeNewsTableViewCell"
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? LikeNewsTableViewCell else { return UITableViewCell() }
+            
+            cell.configure(with: newsfeed[indexPath.section])
             return cell
         default:
             return UITableViewCell()

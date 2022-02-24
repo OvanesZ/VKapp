@@ -7,19 +7,35 @@
 
 import UIKit
 
-class LikeNewsTableViewCell: UITableViewCell {
+class LikeNewsTableViewCell: UITableViewCell, AnyNewsCell {
 
 
     
     
-    @IBOutlet var likeItemsLabel: UILabel!
+//    @IBOutlet var likeItemsLabel: UILabel!
+//
+//
+//    func configure(with like: News) {
+//
+//   //     likeItemsLabel.text = String(describing: like.likeValue)
+//
+//
+//    }
     
     
-    func configure(with like: News) {
+    private let likeImageView = UIImageView()
+    private let likesCountLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configure(with news: News) {
         
-   //     likeItemsLabel.text = String(describing: like.likeValue)
-    
-    
     }
 
 }
