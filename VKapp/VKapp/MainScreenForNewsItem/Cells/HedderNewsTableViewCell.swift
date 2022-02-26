@@ -13,20 +13,6 @@ import Kingfisher
 class HedderNewsTableViewCell: UITableViewCell, AnyNewsCell {
 
     
-//    @IBOutlet var hedderLabel: UILabel!
-//
-//
-//
-//    @IBOutlet var hedderImage: UIImageView!
-//
-//    func configure(with hedder: News) {
-//
-////        hedderLabel.text = String(describing: hedder.text)
-////        hedderImage.image = hedder.photosURL
-//       // hedderImage.kf.setImage(with: hedder.avatarURL)
-//        // Configure the view for the selected state
-//    }
-    
     private let avatarImageView = UIImageView()
     private let authorName = UILabel()
     private let dateLabel = UILabel()

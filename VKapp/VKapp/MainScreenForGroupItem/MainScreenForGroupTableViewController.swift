@@ -39,26 +39,22 @@ class MainScreenForGroupTableViewController: UITableViewController {
 
  
 
-        
-        
-        
-        
-        
+    
         networkSession.loadGroup(token: userToken, completion: { result in
             switch result {
             case let .failure(error):
                 print(error)
             case let .success(groups):
-                
-                do {
-                    let newGroup = groups
-                    try self.realm?.write({
-                        self.realm?.add(newGroup, update: Realm.UpdatePolicy.all)
-                        print(self.realm?.configuration.fileURL ?? "")
-                    })
-                } catch {
-                    print(error)
-                }
+                try? RealmService.save(items: groups, configuration: RealmService.deleteIfMigration, update: .modified)
+//                do {
+//                    let newGroup = groups
+//                    try self.realm?.write({
+//                        self.realm?.add(newGroup, update: Realm.UpdatePolicy.all)
+//                        print(self.realm?.configuration.fileURL ?? "")
+//                    })
+//                } catch {
+//                    print(error)
+//                }
         }
     })
         
